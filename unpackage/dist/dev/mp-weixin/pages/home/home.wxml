@@ -1,0 +1,1 @@
+<view class="container"><text>home</text><view><navigator url="/subpages/news/news">enter news center</navigator></view></view>

@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/404/404",
+    "pages/account/account",
+    "pages/cart/cart"
+  ],
+  "subPackages": [
+    {
+      "root": "subpages",
+      "pages": [
+        "news/news",
+        "chat/chat"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "backgroundColor": "white",
+    "color": "#ccc",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "/static/icons/loc.png",
+        "selectedIconPath": "/static/icons/loc_fill.png",
+        "text": "Home"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "/static/icons/cart.png",
+        "selectedIconPath": "/static/icons/cart_filled.png",
+        "text": "Cart"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "iconPath": "/static/icons/person.png",
+        "selectedIconPath": "/static/icons/pesron_fill.png",
+        "text": "Mine"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

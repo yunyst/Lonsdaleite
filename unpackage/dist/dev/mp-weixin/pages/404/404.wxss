@@ -1,0 +1,15 @@
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.page404 {
+  position: absolute;
+  color: black;
+  font-size: 50rpx;
+}
+

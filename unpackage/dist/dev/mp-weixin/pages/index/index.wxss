@@ -1,0 +1,17 @@
+
+.content {
+  display: flex;
+  align-items: center;
+  margin: 40rpx
+}
+.input {
+  border-bottom: 1px solid #ccc;
+  padding: 6rpx;
+  flex: 1
+}
+.messageBox {
+  margin: 40rpx;
+  border-bottom: 1px solid #ccc;
+  padding: 20rpx;
+}
+
