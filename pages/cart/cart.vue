@@ -1,6 +1,6 @@
 <template>
-  <view>
-    
+  <view class="container">
+    <u-button type="primary"><text>vaild</text></u-button>
   </view>
 </template>
 
@@ -8,14 +8,16 @@
   export default {
     data() {
       return {
-        
+
       }
     },
     methods: {
-      
-    }
+
+    },
+    components: {}
   }
 </script>
+
 
 <style>
 

@@ -7,10 +7,12 @@
   "setting": {
     "urlCheck": false,
     "es6": false,
-    "postcss": false,
+    "postcss": true,
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
+    "ignoreDevUnusedFiles": false,
+    "ignoreUploadUnusedFiles": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
