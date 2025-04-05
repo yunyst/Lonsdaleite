@@ -4,7 +4,10 @@
     "pages/index/index",
     "pages/404/404",
     "pages/account/account",
-    "pages/cart/cart"
+    "pages/cart/cart",
+    "pages/skincare/skincare",
+    "pages/makeup/makeup",
+    "pages/cleaning/cleaning"
   ],
   "subPackages": [
     {

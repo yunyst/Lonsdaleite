@@ -2,7 +2,7 @@
 
 /***/ 168:
 /*!***************************************************************************!*\
-  !*** E:/WechatProgram/Lansdaleite/main.js?{"page":"pages%2Fhome%2Fhome"} ***!
+  !*** E:/WechatProgram/Lonsdaleite/main.js?{"page":"pages%2Fhome%2Fhome"} ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -24,7 +24,7 @@ createPage(_home.default);
 
 /***/ 169:
 /*!********************************************************!*\
-  !*** E:/WechatProgram/Lansdaleite/pages/home/home.vue ***!
+  !*** E:/WechatProgram/Lonsdaleite/pages/home/home.vue ***!
   \********************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -65,7 +65,7 @@ component.options.__file = "pages/home/home.vue"
 
 /***/ 170:
 /*!***************************************************************************************************!*\
-  !*** E:/WechatProgram/Lansdaleite/pages/home/home.vue?vue&type=template&id=92bb8f34&scoped=true& ***!
+  !*** E:/WechatProgram/Lonsdaleite/pages/home/home.vue?vue&type=template&id=92bb8f34&scoped=true& ***!
   \***************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -87,7 +87,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 171:
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/WechatProgram/Lansdaleite/pages/home/home.vue?vue&type=template&id=92bb8f34&scoped=true& ***!
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/WechatProgram/Lonsdaleite/pages/home/home.vue?vue&type=template&id=92bb8f34&scoped=true& ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -101,14 +101,17 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uSwiper: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-swiper/u-swiper.vue */ 216))
+    HomeTabBar: function () {
+      return Promise.all(/*! import() | components/HomeTabBar/HomeTabBar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/HomeTabBar/HomeTabBar")]).then(__webpack_require__.bind(null, /*! @/components/HomeTabBar/HomeTabBar.vue */ 284))
     },
     ProductCard: function () {
-      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 286))
+      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 216))
+    },
+    AllGoodsCard: function () {
+      return __webpack_require__.e(/*! import() | components/AllGoodsCard/AllGoodsCard */ "components/AllGoodsCard/AllGoodsCard").then(__webpack_require__.bind(null, /*! @/components/AllGoodsCard/AllGoodsCard.vue */ 223))
     },
     uLoadMore: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-loadmore/u-loadmore.vue */ 224))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-loadmore/u-loadmore.vue */ 230))
     },
   }
 } catch (e) {
@@ -143,7 +146,7 @@ render._withStripped = true
 
 /***/ 172:
 /*!*********************************************************************************!*\
-  !*** E:/WechatProgram/Lansdaleite/pages/home/home.vue?vue&type=script&lang=js& ***!
+  !*** E:/WechatProgram/Lonsdaleite/pages/home/home.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -159,94 +162,104 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 173:
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/WechatProgram/Lansdaleite/pages/home/home.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/WechatProgram/Lonsdaleite/pages/home/home.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
-
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var ProductCard = function ProductCard() {
   __webpack_require__.e(/*! require.ensure | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 286));
+    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 216));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var AllGoodsCard = function AllGoodsCard() {
+  __webpack_require__.e(/*! require.ensure | components/AllGoodsCard/AllGoodsCard */ "components/AllGoodsCard/AllGoodsCard").then((function () {
+    return resolve(__webpack_require__(/*! ../../components/AllGoodsCard/AllGoodsCard */ 223));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var HomeTabBar = function HomeTabBar() {
+  Promise.all(/*! require.ensure | components/HomeTabBar/HomeTabBar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/HomeTabBar/HomeTabBar")]).then((function () {
+    return resolve(__webpack_require__(/*! ../../components/HomeTabBar/HomeTabBar */ 284));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   components: {
-    ProductCard: ProductCard
+    ProductCard: ProductCard,
+    AllGoodsCard: AllGoodsCard,
+    HomeTabBar: HomeTabBar
   },
   data: function data() {
     return {
       // 当前选中的分类
-      activeCategory: 'featured',
+      activeCategory: 'cleaning',
+      isLoading: false,
+      bannerList: [],
       // 分类栏
       categoryTabs: [{
         label: '精选',
-        value: 'featured'
+        value: 'cleaning'
       }, {
-        label: 'makeup',
+        label: '彩妆',
         value: 'makeup'
       }, {
-        label: 'skincare',
+        label: '护肤',
         value: 'skincare'
       }, {
-        label: 'fragrance',
+        label: '香水',
         value: 'fragrance'
       }, {
-        label: 'bodycare',
+        label: '身体洗护',
         value: 'bodycare'
       }, {
-        label: 'male',
+        label: '男士',
         value: 'male'
-      }],
-      // Banner 数据
-      bannerList: [{
-        url: '',
-        img: 'https://dummyimage.com/750x400/eee/333&text=Banner1'
-      }, {
-        url: '',
-        img: 'https://dummyimage.com/750x400/ccc/333&text=Banner2'
-      }, {
-        url: '',
-        img: 'https://dummyimage.com/750x400/bbb/333&text=Banner3'
       }],
       // 分类图标
       iconList: [{
-        img: 'https://dummyimage.com/100x100/eee/333&text=Icon1',
-        title: '热卖'
+        img: 'http://su3fi9c95.hd-bkt.clouddn.com/icons/home/classify/sale.png',
+        title: '每日热卖'
       }, {
-        img: 'https://dummyimage.com/100x100/ccc/333&text=Icon2',
-        title: '大牌'
+        img: 'http://su3fi9c95.hd-bkt.clouddn.com/icons/home/classify/First%20Position%20Badge.png',
+        title: '畅销榜单'
       }, {
-        img: 'https://dummyimage.com/100x100/aaa/333&text=Icon3',
-        title: '折扣'
+        img: 'http://su3fi9c95.hd-bkt.clouddn.com/icons/home/classify/new.png',
+        title: '人气精选'
       }, {
-        img: 'https://dummyimage.com/100x100/f5f5f5/333&text=Icon4',
-        title: '限量'
+        img: 'http://su3fi9c95.hd-bkt.clouddn.com/icons/home/classify/new-fill.png',
+        title: '新品试用'
       }, {
-        img: 'https://dummyimage.com/100x100/f0f0f0/333&text=Icon5',
-        title: '优惠'
-      }, {
-        img: 'https://dummyimage.com/100x100/e0e0e0/333&text=Icon6',
-        title: '礼品'
+        img: 'http://su3fi9c95.hd-bkt.clouddn.com/icons/home/classify/woman.png',
+        title: '美妆服务'
       }],
       // 五大板块
       sections: [{
         title: '人气畅销',
         products: [{
+          only: true,
+          new: true,
+          brand: 'sk2',
           img: 'https://dummyimage.com/200x200/eee/333&text=SK-II',
           name: 'SK-II 神仙水 230ml',
           price: 2100
         }, {
+          only: true,
+          brand: 'LANCOME',
           img: 'https://dummyimage.com/200x200/ccc/333&text=LANCOME',
           name: 'LANCOME 小黑瓶 100ml',
           price: 500
         }, {
+          only: false,
+          brand: 'SHISEIDO',
           img: 'https://dummyimage.com/200x200/bbb/333&text=SHISEIDO',
           name: 'SHISEIDO 资生堂 红腰子精华 50ml',
           price: 760
@@ -254,11 +267,31 @@ var _default = {
       }, {
         title: '新品速递',
         products: [{
+          brand: 'DIOR',
           img: 'https://dummyimage.com/200x200/f0f0f0/333&text=DIOR',
           new: true,
           name: 'DIOR 花秘面霜 60ml',
           price: 900
         }, {
+          brand: '赫莲娜',
+          new: true,
+          img: 'https://dummyimage.com/200x200/e0e0e0/333&text=HR',
+          name: '赫莲娜 绿宝瓶精华 50ml',
+          price: 1280
+        }, {
+          brand: '赫莲娜',
+          new: true,
+          img: 'https://dummyimage.com/200x200/e0e0e0/333&text=HR',
+          name: '赫莲娜 绿宝瓶精华 50ml',
+          price: 1280
+        }, {
+          brand: '赫莲娜',
+          new: true,
+          img: 'https://dummyimage.com/200x200/e0e0e0/333&text=HR',
+          name: '赫莲娜 绿宝瓶精华 50ml',
+          price: 1280
+        }, {
+          brand: '赫莲娜',
           new: true,
           img: 'https://dummyimage.com/200x200/e0e0e0/333&text=HR',
           name: '赫莲娜 绿宝瓶精华 50ml',
@@ -267,10 +300,12 @@ var _default = {
       }, {
         title: '玩妆课堂',
         products: [{
+          brand: 'MAC',
           img: 'https://dummyimage.com/200x200/aaa/333&text=MAC',
           name: 'MAC 口红 Chili',
           price: 170
         }, {
+          brand: 'ARMANI',
           img: 'https://dummyimage.com/200x200/ddd/333&text=ARMANI',
           name: 'ARMANI 红管唇釉 #405',
           price: 320
@@ -278,10 +313,12 @@ var _default = {
       }, {
         title: '净卸妆容',
         products: [{
+          brand: 'BIODERMA',
           img: 'https://dummyimage.com/200x200/eee/333&text=BIODERMA',
           name: 'BIODERMA 舒妍卸妆水 500ml',
           price: 128
         }, {
+          brand: 'FANCL',
           img: 'https://dummyimage.com/200x200/ccc/333&text=FANCL',
           name: 'FANCL 卸妆油 120ml',
           price: 198
@@ -289,10 +326,12 @@ var _default = {
       }, {
         title: '全球趋势',
         products: [{
+          brand: 'LA MER',
           img: 'https://dummyimage.com/200x200/aaa/333&text=LA+MER',
           name: 'LA MER 精华面霜 60ml',
           price: 1850
         }, {
+          brand: 'CPB',
           img: 'https://dummyimage.com/200x200/999/333&text=CPB',
           name: 'CPB 精华肌底液 40ml',
           price: 980
@@ -300,22 +339,58 @@ var _default = {
       }],
       // 全部商品（下拉加载或上拉加载）
       allGoods: [{
+        brand: 'CPB',
         img: 'https://dummyimage.com/200x200/eee/333&text=ITEM1',
         name: '商品1',
         price: 200
       }, {
+        brand: 'CPB',
         img: 'https://dummyimage.com/200x200/ccc/333&text=ITEM2',
         name: '商品2',
         price: 350
       }, {
+        brand: 'CPB',
+        new: true,
         img: 'https://dummyimage.com/200x200/bbb/333&text=ITEM3',
         name: '商品3',
         price: 600
+      }, {
+        brand: 'SK-II',
+        img: 'https://dummyimage.com/200x200/eee/333&text=SK-II',
+        name: 'SK-II 神仙水 230ml',
+        price: 2100
+      }, {
+        brand: 'LANCOME',
+        img: 'https://dummyimage.com/200x200/ccc/333&text=LANCOME',
+        name: 'LANCOME 小黑瓶 100ml',
+        price: 500
+      }, {
+        brand: 'SHISEIDO',
+        new: true,
+        img: 'https://dummyimage.com/200x200/bbb/333&text=SHISEIDO',
+        name: 'SHISEIDO 资生堂 红腰子精华 50ml',
+        price: 760
+      }, {
+        brand: 'SHISEIDO',
+        new: true,
+        img: 'https://dummyimage.com/200x200/bbb/333&text=SHISEIDO',
+        name: 'SHISEIDO 资生堂 红腰子精华 50ml',
+        price: 760
       }],
+      columns: [[], []],
+      // 2列
       loadMoreStatus: 'loadmore' // loadmore, loading, nomore
     };
   },
 
+  watch: {
+    allGoods: {
+      handler: function handler(newGoods) {
+        this.distributeGoods(newGoods);
+      },
+      immediate: true
+    }
+  },
   methods: {
     // 点击分类栏
     onCategoryClick: function onCategoryClick(value) {
@@ -351,16 +426,87 @@ var _default = {
         // 更新状态
         _this.loadMoreStatus = 'nomore';
       }, 1200);
+    },
+    distributeGoods: function distributeGoods(goods) {
+      var _this2 = this;
+      this.columns = [[], []]; // 清空列
+      goods.forEach(function (item, index) {
+        _this2.columns[index % 2].push(item); // 交替分配到两列
+      });
+    },
+    // 获取banner数据的方法
+    fetchBanners: function fetchBanners() {
+      var _arguments = arguments,
+        _this3 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var pageType, result;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                pageType = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 'cleaning';
+                _this3.isLoading = true;
+                _this3.error = null;
+                _context.prev = 3;
+                _context.next = 6;
+                return uniCloud.callFunction({
+                  name: 'getBanners',
+                  // 你的云函数名称
+                  data: {
+                    pageType: pageType // 传递参数
+                  }
+                });
+              case 6:
+                result = _context.sent;
+                if (result.result.code === 200) {
+                  _this3.bannerList = result.result.data || [];
+                  console.log(_this3.bannerList);
+                } else {
+                  _this3.error = result.result.message || '获取数据失败';
+                }
+                _context.next = 14;
+                break;
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](3);
+                console.error('调用云函数失败:', _context.t0);
+                _this3.error = '网络请求失败，请稍后重试';
+              case 14:
+                _context.prev = 14;
+                _this3.isLoading = false;
+                return _context.finish(14);
+              case 17:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 10, 14, 17]]);
+      }))();
+    },
+    onTabChange: function onTabChange(categoryValue) {
+      // 如果点击的分类是 cleaning，则当前页面就是 cleaning，无需跳转
+      if (categoryValue === 'cleaning') return;
+      // 跳转到对应分类页面，这里用 navigateTo（如果不是 tabBar 页面）
+      uni.navigateTo({
+        url: "/pages/".concat(categoryValue, "/").concat(categoryValue)
+      });
     }
+  },
+  onLoad: function onLoad() {
+    var _this4 = this;
+    this.fetchBanners(this.activeCategory).then(function () {
+      console.log("Banner 数据加载完成:", _this4.bannerList);
+    });
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
 /***/ 174:
 /*!*****************************************************************************************************************!*\
-  !*** E:/WechatProgram/Lansdaleite/pages/home/home.vue?vue&type=style&index=0&id=92bb8f34&scoped=true&lang=css& ***!
+  !*** E:/WechatProgram/Lonsdaleite/pages/home/home.vue?vue&type=style&index=0&id=92bb8f34&scoped=true&lang=css& ***!
   \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -376,7 +522,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 175:
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/WechatProgram/Lansdaleite/pages/home/home.vue?vue&type=style&index=0&id=92bb8f34&scoped=true&lang=css& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!E:/WechatProgram/Lonsdaleite/pages/home/home.vue?vue&type=style&index=0&id=92bb8f34&scoped=true&lang=css& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

@@ -16,9 +16,8 @@ exports.main = async (event, context) => {
         suggest: '可用值: cleaning, skincare, makeup, perfume, men'
       };
     }
-
     // 2. 查询数据
-    const res = await db.collection('banners')
+    const res = await db.collection('banner')
       .where({
         page_type: pageType // 直接匹配page_type字段
       })
@@ -29,7 +28,7 @@ exports.main = async (event, context) => {
       code: 200,
       data: res.data.map(item => ({
         id: item.banner_id,
-        imageUrl: item.image_url
+        image: item.image_url
       })),
       count: res.data.length
     };

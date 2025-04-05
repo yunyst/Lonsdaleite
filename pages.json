@@ -3,7 +3,8 @@
     "autoscan": true,
     "custom": {
       "^u-(?!load-more)(.*)$": "uview-ui/components/u-$1/u-$1.vue",
-      "^u-load-more$": "uview-ui/components/u-loadmore/u-loadmore.vue"
+      "^u-load-more$": "uview-ui/components/u-loadmore/u-loadmore.vue",
+      "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
     }
   },
   // "easycom": {
@@ -47,6 +48,27 @@
       "style": {
         "navigationBarTitleText": "Cart",
         "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path" : "pages/skincare/skincare",
+      "style" : 
+      {
+        "navigationBarTitleText" : ""
+      }
+    },
+    {
+      "path" : "pages/makeup/makeup",
+      "style" : 
+      {
+        "navigationBarTitleText" : ""
+      }
+    },
+    {
+      "path" : "pages/cleaning/cleaning",
+      "style" : 
+      {
+        "navigationBarTitleText" : ""
       }
     }
 

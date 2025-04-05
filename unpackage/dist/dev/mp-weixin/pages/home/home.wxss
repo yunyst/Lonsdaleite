@@ -30,10 +30,27 @@
 }
 
 /* Banner */
-.banner-wrap.data-v-92bb8f34 {
+.swiper.data-v-92bb8f34 {
   width: 100%;
-  height: auto;
-  margin-bottom: 20rpx;
+  height: 400rpx;
+}
+.swiper-image.data-v-92bb8f34 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 修改 swiper 指示点样式 */
+.data-v-92bb8f34 .wx-swiper-dot {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255);
+}
+.data-v-92bb8f34 .wx-swiper-dot-active {
+  background-color: #ffffff;
+  width: 15px;
+  height: 5px;
+  border-radius: 5px;
 }
 
 /* 分类图标 */
@@ -56,9 +73,9 @@
   align-items: center;
 }
 .icon-img.data-v-92bb8f34 {
-  width: 80rpx;
-  height: 80rpx;
-  margin-bottom: 8rpx;
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 12rpx;
 }
 .icon-title.data-v-92bb8f34 {
   font-size: 20rpx;
@@ -67,7 +84,6 @@
 
 /* 五大板块 */
 .section-wrap.data-v-92bb8f34 {
-  margin-bottom: 20rpx;
   padding: 10rpx;
   margin: 10rpx 20rpx;
 }
@@ -79,9 +95,13 @@
   padding-left: 20rpx;
 }
 .product-scroll.data-v-92bb8f34 {
-  white-space: nowrap;
-  display: flex;
   overflow-x: auto;
+  white-space: nowrap;
+  /* border: #000000 1px solid; */
+}
+.product_scroll-child.data-v-92bb8f34 {
+  display: flex;
+  flex-direction: row;
 }
 
 /* 全部商品 */
@@ -96,33 +116,26 @@
   padding: 20rpx;
   color: #333;
 }
-.goods-list.data-v-92bb8f34 {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 20rpx;
+
+/* .goods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
-.goods-item.data-v-92bb8f34 {
-  width: 50%;
-  box-sizing: border-box;
-  padding: 10rpx;
-}
-.goods-img.data-v-92bb8f34 {
+
+.goods-card {
   width: 100%;
-  height: 300rpx;
-  border-radius: 10rpx;
-  margin-bottom: 10rpx;
+} */
+.product-grid.data-v-92bb8f34 {
+  padding: 20rpx;
 }
-.goods-info.data-v-92bb8f34 {
-  text-align: left;
+.goods-grid.data-v-92bb8f34 {
+  display: flex;
+  justify-content: space-between;
 }
-.goods-name.data-v-92bb8f34 {
-  font-size: 24rpx;
-  color: #333;
-  line-height: 32rpx;
+.goods-column.data-v-92bb8f34 {
+  width: 48%;
 }
-.goods-price.data-v-92bb8f34 {
-  font-size: 26rpx;
-  color: #e6232e;
-  margin-top: 4rpx;
+.goods-card.data-v-92bb8f34 {
+  margin-bottom: 20rpx;
 }
 

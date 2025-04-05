@@ -7,10 +7,12 @@ import './uni.promisify.adaptor'
 import uView from 'uview-ui'
 Vue.use(uView)
 uni.$u.config.unit = 'rpx'
+import store from './store' //  引入 store
 
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
+  store,
   ...App
 })
 app.$mount()

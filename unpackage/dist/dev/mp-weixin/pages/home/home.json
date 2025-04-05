@@ -1,8 +1,9 @@
 {
   "navigationBarTitleText": "Home",
   "usingComponents": {
-    "u-swiper": "/node-modules/uview-ui/components/u-swiper/u-swiper",
+    "home-tab-bar": "/components/HomeTabBar/HomeTabBar",
     "product-card": "/components/ProductCard/ProductCard",
+    "all-goods-card": "/components/AllGoodsCard/AllGoodsCard",
     "u-load-more": "/node-modules/uview-ui/components/u-loadmore/u-loadmore"
   }
 }
