@@ -30118,77 +30118,9 @@ module.exports = index_cjs;
   !*** E:/WechatProgram/Lonsdaleite/store/index.js ***!
   \***************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 289));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./home/index.js */ 294));
-_vue.default.use(_vuex.default);
-
-// //准备state对象——保存具体的数据
-// const state = {}
-// //准备mutations对象——修改state中的数据
-// const mutations = {}
-// //准备actions对象——响应组件中用户的动作
-// const actions = {}
-// //准备getters:理解为计算属性，用于简化仓库数据
-// const getters = {}
-var _default = new _vuex.default.Store({
-  modules: {
-    home: _index.default
-  }
-});
-exports.default = _default;
-
-/***/ }),
-/* 294 */
-/*!********************************************************!*\
-  !*** E:/WechatProgram/Lonsdaleite/store/home/index.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-//准备state对象——保存具体的数据
-var state = {
-  activeCategory: 'cleaning'
-};
-//准备mutations对象——修改state中的数据
-var mutations = {
-  SET_ACTIVE_CATEGORY: function SET_ACTIVE_CATEGORY(state, category) {
-    state.activeCategory = category;
-  }
-};
-//准备actions对象——响应组件中用户的动作
-var actions = {
-  updateCategory: function updateCategory(_ref, category) {
-    var commit = _ref.commit;
-    commit('SET_ACTIVE_CATEGORY', category);
-  }
-};
-//准备getters:理解为计算属性，用于简化仓库数据
-var getters = {};
-var _default = {
-  state: state,
-  mutations: mutations,
-  actions: actions,
-  getters: getters
-};
-exports.default = _default;
+throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js):\nError: ENOENT: no such file or directory, open 'E:\\WechatProgram\\Lonsdaleite\\store\\index.js'");
 
 /***/ })
 ]]);
