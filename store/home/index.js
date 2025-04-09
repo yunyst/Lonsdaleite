@@ -1,6 +1,32 @@
 //准备state对象——保存具体的数据
 const state = {
-  activeCategory: 'cleaning'
+  activeCategory: 'cleaning',
+  categoryTabs: [{
+      label: '精选',
+      value: 'cleaning'
+    },
+    {
+      label: '彩妆',
+      value: 'makeup'
+    },
+    {
+      label: '护肤',
+      value: 'skincare'
+    },
+    {
+      label: '香水',
+      value: 'fragrance'
+    },
+    {
+      label: '身体洗护',
+      value: 'bodycare'
+    },
+    {
+      label: '男士',
+      value: 'male'
+    }
+  ],
+
 }
 //准备mutations对象——修改state中的数据
 const mutations = {

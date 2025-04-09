@@ -1,0 +1,334 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Banner */
+.swiper.data-v-cd9462b4 {
+  width: 100%;
+  height: 400rpx;
+}
+.swiper-image.data-v-cd9462b4 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 修改 swiper 指示点样式 */
+.data-v-cd9462b4 .wx-swiper-dot {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255);
+}
+.data-v-cd9462b4 .wx-swiper-dot-active {
+  background-color: #ffffff;
+  width: 15px;
+  height: 5px;
+  border-radius: 5px;
+}
+
+/* 分类图标 */
+.icon-grid.data-v-cd9462b4 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 10rpx 10rpx;
+  margin: 10rpx 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+}
+.icon-item.data-v-cd9462b4 {
+  width: 16%;
+  text-align: center;
+  margin: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.icon-img.data-v-cd9462b4 {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 12rpx;
+}
+.icon-title.data-v-cd9462b4 {
+  font-size: 20rpx;
+  color: #333;
+}
+
+/* 五大板块 */
+.section-wrap.data-v-cd9462b4 {
+  padding: 10rpx;
+  margin: 10rpx 20rpx;
+}
+.section-title.data-v-cd9462b4 {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  color: #333;
+  padding-left: 20rpx;
+}
+.product-scroll.data-v-cd9462b4 {
+  overflow-x: auto;
+  white-space: nowrap;
+  /* border: #000000 1px solid; */
+}
+.product_scroll-child.data-v-cd9462b4 {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 全部商品 */
+.all-goods-wrap.data-v-cd9462b4 {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+}
+.all-goods-title.data-v-cd9462b4 {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 20rpx;
+  color: #333;
+}
+
+/* .goods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.goods-card {
+  width: 100%;
+} */
+.product-grid.data-v-cd9462b4 {
+  padding: 20rpx;
+}
+.goods-grid.data-v-cd9462b4 {
+  display: flex;
+  justify-content: space-between;
+}
+.goods-column.data-v-cd9462b4 {
+  width: 48%;
+}
+.goods-card.data-v-cd9462b4 {
+  margin-bottom: 20rpx;
+}
+

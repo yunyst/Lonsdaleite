@@ -26,48 +26,62 @@
 /* 文章场景相关 */
 .product-item.data-v-70f5c604 {
   width: 200rpx;
-  height: 360rpx;
-  margin: 20rpx;
+  height: 400rpx;
+  margin: 20rpx 15rpx;
   padding: 20rpx;
   display: inline-block;
   background-color: #fff;
   border-radius: 13rpx;
   box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 .product-img.data-v-70f5c604 {
   width: 200rpx;
-  height: 300rpx;
-  border-radius: 10rpx;
+  height: 230rpx;
   margin-bottom: 15rpx;
+  position: relative;
+  overflow: hidden;
+}
+.product-img .img.data-v-70f5c604 {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  border-radius: 10rpx;
 }
 .product-info.data-v-70f5c604 {
   text-align: left;
   display: flex;
   flex-direction: column;
-  /* border: #000000 1rpx solid; */
 }
 .product-name.data-v-70f5c604 {
-  font-size: 24rpx;
+  position: absolute;
+  top: 320rpx;
+  width: 200rpx;
+  margin-bottom: 5rpx;
+  font-size: 22rpx;
   color: #333;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
-  line-height: 24px;
+  white-space: pre-wrap;
   height: 25px;
 }
 .product-price.data-v-70f5c604 {
-  font-size: 26rpx;
+  position: absolute;
+  top: 385rpx;
+  font-size: 28rpx;
+  font-weight: 700;
   color: #000000;
   margin-top: 5rpx;
 }
 .tagProduct.data-v-70f5c604 {
+  position: absolute;
+  width: 200rpx;
+  height: 25rpx;
+  top: 255rpx;
   line-height: 20rpx;
   margin-bottom: 6rpx;
   display: flex;
   gap: 10rpx;
 }
-.new.data-v-70f5c604 {
+.tagProduct .new.data-v-70f5c604 {
   width: 40rpx;
   height: 22rpx;
   border: #ff007f 1px solid;
@@ -80,7 +94,7 @@
   align-items: cneter;
   padding: 1rpx;
 }
-.only.data-v-70f5c604 {
+.tagProduct .only.data-v-70f5c604 {
   width: 40rpx;
   height: 22rpx;
   border: #08d2ff 1px solid;
@@ -94,6 +108,8 @@
   padding: 1rpx;
 }
 .product-brand.data-v-70f5c604 {
+  position: absolute;
+  top: 290rpx;
   font-family: 'boldonse', sans-serif;
   font-weight: 400;
   font-size: 12rpx;

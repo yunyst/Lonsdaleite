@@ -13,9 +13,11 @@ Vue.use(Vuex)
 // const getters = {}
 
 import home from './home/index.js'
+import cleaning from './cleaning/cleaning.js'
 
 export default new Vuex.Store({
   modules: {
-    home
+    home,
+    cleaning
   }
 })

@@ -255,16 +255,17 @@
 }
 @font-face {
   font-family: "boldonse";
-  src: url("http://su3fi9c95.hd-bkt.clouddn.com/font/Boldonse-Regular.ttf");
+  src: url("https://lonsdaleite.oss-cn-beijing.aliyuncs.com/fonts/Boldonse-Regular.ttf?v=1") format("truetype");
+  font-display: swap;
 }
 @font-face {
   font-family: "sourceHan";
   font-size: normal;
-  src: url("http://su3fi9c95.hd-bkt.clouddn.com/font/SourceHanSansCN-Normal.ttf") format("truetype");
+  src: url("https://lonsdaleite.oss-cn-beijing.aliyuncs.com/fonts/SourceHanSansCN-Normal.ttf") format("truetype");
 }
 @font-face {
   font-family: "sourceHan";
   font-size: bold;
-  src: url("http://su3fi9c95.hd-bkt.clouddn.com/font/SourceHanSansCN-Medium.ttf") format("truetype");
+  src: url("https://lonsdaleite.oss-cn-beijing.aliyuncs.com/fonts/SourceHanSansCN-Medium.ttf") format("truetype");
 }
 

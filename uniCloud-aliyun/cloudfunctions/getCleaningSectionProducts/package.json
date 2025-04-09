@@ -1,0 +1,7 @@
+{
+  "name": "getCleaningSectionProducts",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

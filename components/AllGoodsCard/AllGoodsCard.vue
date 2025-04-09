@@ -2,18 +2,18 @@
   <!-- card高度自适应 -->
   <view>
     <view class="product-item" @click="handleClick(good)">
-      <image :src="good.img" class="product-img" mode="widthFix" />
+      <image :src="good.imageUrl" class="product-img" mode="widthFix" />
       <view class="product-info">
         <view class="tagProduct">
-          <view class="new" v-if="good.new">
+          <view class="new" v-if="good.is_new === 'TRUE'">
             <text>New</text>
           </view>
-          <view class="only" v-if="good.only">
+          <view class="only" v-if="good.is_exclusive === 'TRUE'">
             <text>独家</text>
           </view>
         </view>
         <view class="product-brand">
-          <view>{{ good.brand }}</view>
+          <view>{{ good.brand_en_name }}</view>
         </view>
         <view class="product-name">
           <text>{{ good.name }}</text>
@@ -85,7 +85,8 @@
   }
 
   .product-price {
-    font-size: 26rpx;
+    font-size: 28rpx;
+    font-weight: 700;
     color: #000000;
     margin-top: 5rpx;
     // border: #000000 1rpx solid;

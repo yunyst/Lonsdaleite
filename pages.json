@@ -51,26 +51,24 @@
       }
     },
     {
-      "path" : "pages/skincare/skincare",
-      "style" : 
-      {
-        "navigationBarTitleText" : ""
+      "path": "pages/skincare/skincare",
+      "style": {
+        "navigationBarTitleText": ""
       }
     },
     {
-      "path" : "pages/makeup/makeup",
-      "style" : 
-      {
-        "navigationBarTitleText" : ""
+      "path": "pages/makeup/makeup",
+      "style": {
+        "navigationBarTitleText": ""
       }
     },
     {
-      "path" : "pages/cleaning/cleaning",
-      "style" : 
-      {
-        "navigationBarTitleText" : ""
+      "path": "pages/cleaning/cleaning",
+      "style": {
+        "navigationBarTitleText": ""
       }
     }
+
 
   ],
   "subPackages": [{
