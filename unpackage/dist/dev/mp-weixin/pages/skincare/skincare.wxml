@@ -1,1 +1,1 @@
-<view>skincare</view>
+<view class="data-v-168d3374"><swiper class="swiper data-v-168d3374" autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}"><block wx:for="{{bannerList}}" wx:for-item="banner" wx:for-index="__i0__" wx:key="id"><swiper-item class="data-v-168d3374"><image class="swiper-image data-v-168d3374" src="{{banner.image}}" mode="scaleToFill"></image></swiper-item></block></swiper><all-product vue-id="bb183900-1" class="data-v-168d3374" bind:__l="__l"></all-product></view>

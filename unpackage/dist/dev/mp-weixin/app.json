@@ -7,7 +7,8 @@
     "pages/cart/cart",
     "pages/skincare/skincare",
     "pages/makeup/makeup",
-    "pages/cleaning/cleaning"
+    "pages/cleaning/cleaning",
+    "pages/fragrance/fragrance"
   ],
   "subPackages": [
     {

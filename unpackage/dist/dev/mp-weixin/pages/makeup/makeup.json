@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "",
-  "usingComponents": {}
+  "usingComponents": {
+    "product-card": "/components/ProductCard/ProductCard",
+    "all-product": "/components/AllProduct/AllProduct"
+  }
 }

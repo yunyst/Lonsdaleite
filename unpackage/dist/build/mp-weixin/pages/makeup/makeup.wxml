@@ -1,1 +1,1 @@
-<view>makeup</view>
+<view class="data-v-59cd97f4"><swiper class="swiper data-v-59cd97f4" autoplay="{{true}}" circular="{{true}}" indicator-dots="{{true}}"><block wx:for="{{bannerList}}" wx:for-item="banner" wx:for-index="__i0__" wx:key="id"><swiper-item class="data-v-59cd97f4"><image class="swiper-image data-v-59cd97f4" src="{{banner.image}}" mode="scaleToFill"></image></swiper-item></block></swiper></view>

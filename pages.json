@@ -67,6 +67,13 @@
       "style": {
         "navigationBarTitleText": ""
       }
+    },
+    {
+      "path" : "pages/fragrance/fragrance",
+      "style" : 
+      {
+        "navigationBarTitleText" : ""
+      }
     }
 
 

@@ -4,7 +4,6 @@ let db = uniCloud.database({
 });
 exports.main = async (event, context) => {
   let sectionsRes = null;
-
   sectionsRes = await db.collection('cleaningSections').get();
   //板块数据
   const sections = sectionsRes.data;

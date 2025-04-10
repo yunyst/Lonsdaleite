@@ -15,16 +15,18 @@
       <CleaningContent v-if="activeCategory === 'cleaning'" />
       <MakeupContent v-else-if="activeCategory === 'makeup'" />
       <SkincareContent v-else-if="activeCategory === 'skincare'" />
-      <!-- 你可以继续添加其他分类 -->
+      <FragranceContent v-else-if="activeCategory === 'fragrance'" />
+      <!-- 可以继续添加其他分类 -->
     </view>
   </view>
 </template>
 
 <script>
-  import HomeTabBar from '../../components/HomeTabBar/HomeTabBar';
+  import HomeTabBar from '../../components/HomeTabBar/HomeTabBar'
   import CleaningContent from '@/pages/cleaning/cleaning.vue'
   import MakeupContent from '@/pages/makeup/makeup.vue'
   import SkincareContent from '@/pages/skincare/skincare.vue'
+  import FragranceContent from '@/pages/fragrance/fragrance.vue'
   import {
     mapState
   } from 'vuex'
@@ -33,7 +35,8 @@
       HomeTabBar,
       CleaningContent,
       MakeupContent,
-      SkincareContent
+      SkincareContent,
+      FragranceContent
     },
     data() {
       return {

@@ -80,13 +80,10 @@ var components
 try {
   components = {
     ProductCard: function () {
-      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 247))
+      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 259))
     },
-    AllGoodsCard: function () {
-      return __webpack_require__.e(/*! import() | components/AllGoodsCard/AllGoodsCard */ "components/AllGoodsCard/AllGoodsCard").then(__webpack_require__.bind(null, /*! @/components/AllGoodsCard/AllGoodsCard.vue */ 254))
-    },
-    uLoadmore: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-loadmore/u-loadmore.vue */ 261))
+    AllProduct: function () {
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 266))
     },
   }
 } catch (e) {
@@ -158,18 +155,18 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var ProductCard = function ProductCard() {
   __webpack_require__.e(/*! require.ensure | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 247));
+    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 259));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
-var AllGoodsCard = function AllGoodsCard() {
-  __webpack_require__.e(/*! require.ensure | components/AllGoodsCard/AllGoodsCard */ "components/AllGoodsCard/AllGoodsCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllGoodsCard/AllGoodsCard */ 254));
+var AllProduct = function AllProduct() {
+  Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 266));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   components: {
     ProductCard: ProductCard,
-    AllGoodsCard: AllGoodsCard
+    AllProduct: AllProduct
   },
   computed: _objectSpread({}, (0, _vuex.mapState)({
     iconList: function iconList(state) {
@@ -183,35 +180,8 @@ var _default = {
       isLoading: false,
       //banner loading
       bannerList: [],
-      //sections
-      sections: [],
-      //loadmore
-      skip: 0,
-      limit: 10,
-      loading: false,
-      //goods loading
-      hasMore: true,
-      loadMoreStatus: "loadmore",
-      //控制u-load-more组件
-      //加载前值为loadmore，加载中为loading，没有数据为nomore
-      loadText: {
-        loadmore: '轻轻上拉哦~~~~~~~~',
-        loading: '努力加载中~~~~~~~',
-        nomore: '实在是没有了呜呜呜呜呜呜~~~~'
-      },
-      // 全部商品（下拉加载或上拉加载）
-      allGoods: [],
-      columns: [[], []] // 2列
+      sections: []
     };
-  },
-
-  watch: {
-    allGoods: {
-      handler: function handler(newGoods) {
-        this.distributeGoods(newGoods);
-      },
-      immediate: true
-    }
   },
   methods: {
     // ×前往商品详情
@@ -223,18 +193,10 @@ var _default = {
       // })
       // TODO: uni.navigateTo({ url: '/pages/detail/detail?id=' + product.id })
     },
-    //实现瀑布流
-    distributeGoods: function distributeGoods(goods) {
-      var _this = this;
-      this.columns = [[], []]; // 清空列
-      goods.forEach(function (item, index) {
-        _this.columns[index % 2].push(item); // 交替分配到两列
-      });
-    },
     // 获取banner数据
     fetchBanners: function fetchBanners() {
       var _arguments = arguments,
-        _this2 = this;
+        _this = this;
       return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
         var pageType, result;
         return _regenerator.default.wrap(function _callee$(_context) {
@@ -242,8 +204,8 @@ var _default = {
             switch (_context.prev = _context.next) {
               case 0:
                 pageType = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 'cleaning';
-                _this2.isLoading = true;
-                _this2.error = null;
+                _this.isLoading = true;
+                _this.error = null;
                 _context.prev = 3;
                 _context.next = 6;
                 return uniCloud.callFunction({
@@ -256,10 +218,10 @@ var _default = {
               case 6:
                 result = _context.sent;
                 if (result.result.code === 200) {
-                  _this2.bannerList = result.result.data || [];
-                  console.log(_this2.bannerList);
+                  _this.bannerList = result.result.data || [];
+                  console.log(_this.bannerList);
                 } else {
-                  _this2.error = result.result.message || '获取数据失败';
+                  _this.error = result.result.message || '获取数据失败';
                 }
                 _context.next = 14;
                 break;
@@ -267,10 +229,10 @@ var _default = {
                 _context.prev = 10;
                 _context.t0 = _context["catch"](3);
                 console.error('调用云函数失败:', _context.t0);
-                _this2.error = '网络请求失败，请稍后重试';
+                _this.error = '网络请求失败，请稍后重试';
               case 14:
                 _context.prev = 14;
-                _this2.isLoading = false;
+                _this.isLoading = false;
                 return _context.finish(14);
               case 17:
               case "end":
@@ -280,119 +242,54 @@ var _default = {
         }, _callee, null, [[3, 10, 14, 17]]);
       }))();
     },
-    //获取商品卡片详情 调用云函数请求全部商品信息
-    loadMoreGoods: function loadMoreGoods() {
-      var _arguments2 = arguments,
-        _this3 = this;
+    //获取板块商品数据
+    fetchSections: function fetchSections() {
+      var _this2 = this;
       return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
-        var pageType, res, products;
+        var res;
         return _regenerator.default.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                pageType = _arguments2.length > 0 && _arguments2[0] !== undefined ? _arguments2[0] : 'cleaning';
-                if (!(_this3.loading || !_this3.hasMore)) {
-                  _context2.next = 3;
-                  break;
-                }
-                return _context2.abrupt("return");
-              case 3:
-                _this3.loading = true;
-                _this3.loadMoreStatus = "loading";
-                _context2.prev = 5;
-                _context2.next = 8;
-                return uniCloud.callFunction({
-                  name: 'getProductCardInfo',
-                  data: {
-                    pageType: pageType,
-                    skip: _this3.skip,
-                    limit: _this3.limit
-                  }
-                });
-              case 8:
-                res = _context2.sent;
-                products = res.result.data || [];
-                _this3.allGoods = _this3.allGoods.concat(products);
-                _this3.skip += products.length;
-                if (products.length < _this3.limit) {
-                  _this3.hasMore = false;
-                  _this3.loadMoreStatus = "nomore";
-                }
-                _context2.next = 19;
-                break;
-              case 15:
-                _context2.prev = 15;
-                _context2.t0 = _context2["catch"](5);
-                console.error('加载更多失败:', _context2.t0);
-                uni.showToast({
-                  title: '加载失败',
-                  icon: 'none'
-                });
-              case 19:
-                _context2.prev = 19;
-                _this3.loading = false;
-                if (_this3.loadMoreStatus !== "nomore") {
-                  _this3.loadMoreStatus = "loadmore";
-                }
-                return _context2.finish(19);
-              case 23:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, null, [[5, 15, 19, 23]]);
-      }))();
-    },
-    //获取板块商品数据
-    fetchSections: function fetchSections() {
-      var _this4 = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
-        var res;
-        return _regenerator.default.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
+                _context2.prev = 0;
+                _context2.next = 3;
                 return uniCloud.callFunction({
                   name: 'getCleaningSectionProducts'
                 });
               case 3:
-                res = _context3.sent;
+                res = _context2.sent;
                 // console.log(res)
-                _this4.sections = res.result;
-                _context3.next = 11;
+                _this2.sections = res.result;
+                _context2.next = 11;
                 break;
               case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](0);
-                console.error('加载sections data失败:', _context3.t0);
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.error('加载sections data失败:', _context2.t0);
                 uni.showToast({
                   title: '加载失败',
                   icon: 'none'
                 });
               case 11:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee2, null, [[0, 7]]);
       }))();
     }
   },
   mounted: function mounted() {
-    var _this5 = this;
+    var _this3 = this;
     this.fetchBanners(this.pageType).then(function () {
-      // console.log("Banner 数据加载完成", this.bannerList)
-    });
-    this.loadMoreGoods().then(function () {
-      // console.log("allGoods 数据加载完成", this.allGoods)
-    }).catch(function () {
-      console.log("失败");
+      console.log("".concat(_this3.pageType, " banners successful"));
     });
     this.fetchSections().then(function () {
-      console.log("sections 数据加载完成", _this5.sections);
+      console.log("sections 数据加载完成", _this3.sections);
     });
+  },
+  created: function created() {
+    this.$store.dispatch('updateCategory', this.pageType);
   }
 };
 exports.default = _default;
@@ -429,7 +326,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 227:
+/***/ 238:
 /*!***********************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/main.js?{"page":"pages%2Fcleaning%2Fcleaning"} ***!
   \***********************************************************************************/
@@ -451,5 +348,5 @@ createPage(_cleaning.default);
 
 /***/ })
 
-},[[227,"common/runtime","common/vendor"]]]);
+},[[238,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/cleaning/cleaning.js.map

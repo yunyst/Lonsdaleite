@@ -1,6 +1,6 @@
 //准备state对象——保存具体的数据
 const state = {
-  activeCategory: 'cleaning',
+  activeCategory: 'makeup',
   categoryTabs: [{
       label: '精选',
       value: 'cleaning'
@@ -43,7 +43,9 @@ const actions = {
   }
 }
 //准备getters:理解为计算属性，用于简化仓库数据
-const getters = {}
+const getters = {
+  activeCategory: (state) => state.activeCategory,
+}
 
 
 export default {
