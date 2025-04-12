@@ -74,6 +74,7 @@
       width: 100%;
       height: auto;
       border-radius: 10rpx;
+      object-fit: contain;
     }
   }
 
@@ -96,6 +97,7 @@
     white-space: pre-wrap;
     // line-height: 24px;
     height: 25px;
+    font-weight: 700;
   }
 
 

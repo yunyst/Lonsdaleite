@@ -79,8 +79,11 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    TransProductsCard: function () {
+      return __webpack_require__.e(/*! import() | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then(__webpack_require__.bind(null, /*! @/components/TransProductsCard/TransProductsCard.vue */ 289))
+    },
     AllProduct: function () {
-      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 266))
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 274))
     },
   }
 } catch (e) {
@@ -148,7 +151,12 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var AllProduct = function AllProduct() {
   Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 266));
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 274));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var TransProductsCard = function TransProductsCard() {
+  __webpack_require__.e(/*! require.ensure | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then((function () {
+    return resolve(__webpack_require__(/*! ../../components/TransProductsCard/TransProductsCard.vue */ 289));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -160,7 +168,8 @@ var _default = {
     };
   },
   components: {
-    AllProduct: AllProduct
+    AllProduct: AllProduct,
+    TransProductsCard: TransProductsCard
   },
   methods: {
     // 获取banner数据
@@ -257,7 +266,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 236:
+/***/ 243:
 /*!***********************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/main.js?{"page":"pages%2Fskincare%2Fskincare"} ***!
   \***********************************************************************************/
@@ -279,5 +288,5 @@ createPage(_skincare.default);
 
 /***/ })
 
-},[[236,"common/runtime","common/vendor"]]]);
+},[[243,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/skincare/skincare.js.map

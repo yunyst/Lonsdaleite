@@ -80,10 +80,13 @@ var components
 try {
   components = {
     ProductCard: function () {
-      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 259))
+      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 267))
     },
     AllProduct: function () {
-      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 266))
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 274))
+    },
+    uBackTop: function () {
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-back-top/u-back-top */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-back-top/u-back-top")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-back-top/u-back-top.vue */ 281))
     },
   }
 } catch (e) {
@@ -155,12 +158,12 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var ProductCard = function ProductCard() {
   __webpack_require__.e(/*! require.ensure | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 259));
+    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 267));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var AllProduct = function AllProduct() {
   Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 266));
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 274));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -180,7 +183,9 @@ var _default = {
       isLoading: false,
       //banner loading
       bannerList: [],
-      sections: []
+      sections: [],
+      //return top
+      scrollTop: 0
     };
   },
   methods: {
@@ -277,6 +282,10 @@ var _default = {
           }
         }, _callee2, null, [[0, 7]]);
       }))();
+    },
+    //return top
+    onPageScroll: function onPageScroll(e) {
+      this.scrollTop = e.scrollTop;
     }
   },
   mounted: function mounted() {
@@ -326,7 +335,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 238:
+/***/ 245:
 /*!***********************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/main.js?{"page":"pages%2Fcleaning%2Fcleaning"} ***!
   \***********************************************************************************/
@@ -348,5 +357,5 @@ createPage(_cleaning.default);
 
 /***/ })
 
-},[[238,"common/runtime","common/vendor"]]]);
+},[[245,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/cleaning/cleaning.js.map

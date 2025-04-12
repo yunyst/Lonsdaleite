@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.card2.data-v-e2693484 {
+  width: 725rpx;
+  height: 260rpx;
+  border-radius: 10rpx;
+  background-size: cover;
+  opacity: 0.9;
+}
+.card2 .titlemask.data-v-e2693484 {
+  float: left;
+  width: 80rpx;
+  height: 260rpx;
+  border-radius: 10rpx 0 0 10rpx;
+  display: flex;
+  justify-content: center;
+}
+.card2 .titlemask .title.data-v-e2693484 {
+  padding: 19rpx;
+  -webkit-writing-mode: vertical-rl;
+          writing-mode: vertical-rl;
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 500;
+  letter-spacing: 4px;
+}
+.card2 .card-scroll.data-v-e2693484 {
+  float: right;
+  width: 645rpx;
+  height: 260rpx;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.card2 .card-scroll-child.data-v-e2693484 {
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx;
+}
+.card2 .card-products-transp.data-v-e2693484 {
+  width: 180rpx;
+  height: 240rpx;
+  position: relative;
+  margin: 0 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card2 .card-products-transp .imgC.data-v-e2693484 {
+  position: absolute;
+  top: 0;
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card2 .card-products-transp .imgC .img.data-v-e2693484 {
+  width: auto;
+  height: 120rpx;
+}
+.card2 .card-products-transp .title.data-v-e2693484 {
+  position: absolute;
+  bottom: 0rpx;
+  height: 55rpx;
+  font-size: 20rpx;
+  margin: 10rpx;
+  color: #000000;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: normal;
+  /* 允许换行 */
+  display: -webkit-box;
+  /* 使用 flexbox 样式 */
+  -webkit-box-orient: vertical;
+  /* 垂直排列文本 */
+  -webkit-line-clamp: 2;
+  /* 限制显示的行数为2行，可以根据需要调整 */
+}
+

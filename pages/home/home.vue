@@ -16,6 +16,8 @@
       <MakeupContent v-else-if="activeCategory === 'makeup'" />
       <SkincareContent v-else-if="activeCategory === 'skincare'" />
       <FragranceContent v-else-if="activeCategory === 'fragrance'" />
+      <BodycareContent v-else-if="activeCategory === 'bodycare'" />
+
       <!-- 可以继续添加其他分类 -->
     </view>
   </view>
@@ -27,6 +29,7 @@
   import MakeupContent from '@/pages/makeup/makeup.vue'
   import SkincareContent from '@/pages/skincare/skincare.vue'
   import FragranceContent from '@/pages/fragrance/fragrance.vue'
+  import BodycareContent from '@/pages/bodycare/bodycare.vue'
   import {
     mapState
   } from 'vuex'
@@ -36,7 +39,8 @@
       CleaningContent,
       MakeupContent,
       SkincareContent,
-      FragranceContent
+      FragranceContent,
+      BodycareContent
     },
     data() {
       return {

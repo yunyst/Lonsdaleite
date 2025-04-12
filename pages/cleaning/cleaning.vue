@@ -29,8 +29,10 @@
     </view>
     <!-- 全部商品（下拉加载/上拉加载） -->
     <AllProduct></AllProduct>
+    <!-- 返回顶部（未完） -->
+    <u-back-top :scroll-top="scrollTop" top="600"></u-back-top>
   </view>
-  </view>
+
 </template>
 
 <script>
@@ -56,6 +58,8 @@
         isLoading: false, //banner loading
         bannerList: [],
         sections: [],
+        //return top
+        scrollTop: 0
       }
     },
 
@@ -110,6 +114,10 @@
             icon: 'none'
           });
         }
+      },
+      //return top
+      onPageScroll(e) {
+        this.scrollTop = e.scrollTop;
       }
     },
     mounted() {

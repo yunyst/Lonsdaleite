@@ -21,6 +21,7 @@
           </view>
         </scroll-view>
       </view>
+      <TransProductsCard :pageType="pageType"></TransProductsCard>
     </view>
     <!-- 展示所有商品 -->
     <AllProduct></AllProduct>
@@ -30,18 +31,21 @@
 <script>
   import AllProduct from "../../components/AllProduct/AllProduct.vue";
   import ProductCard from "../../components/ProductCard/ProductCard.vue"
+  import TransProductsCard from "../../components/TransProductsCard/TransProductsCard.vue"
   export default {
     data() {
       return {
         pageType: "makeup",
         isLoading: false,
         bannerList: [],
-        cardProducts: []
+        cardProducts: [],
+
       }
     },
     components: {
       AllProduct,
-      ProductCard
+      ProductCard,
+      TransProductsCard
     },
     methods: {
       // 获取banner数据
@@ -139,52 +143,52 @@
 
   .card {
     width: 100%;
-    height: 480rpx;
+    height: auto;
     margin: 20rpx 0 0 0;
     padding: 15rpx;
-  }
 
-  .card1 {
-    width: 725rpx;
-    height: 480rpx;
-    border-radius: 10rpx;
-    // background-color: #ffb4b5;
-    background: linear-gradient(to bottom, #ffd0d3, #fe9193);
-    opacity: 0.9;
-
-    .titlemask {
-      float: left;
-      width: 80rpx;
+    .card1 {
+      width: 725rpx;
       height: 480rpx;
-      border-radius: 10rpx 0 0 10rpx;
-      background-color: #ec7678;
-      display: flex;
-      justify-content: center;
-      box-shadow: 5rpx 0 10rpx #b05772;
+      border-radius: 10rpx;
+      // background-color: #ffb4b5;
+      background: linear-gradient(to bottom, #ffd0d3, #fe9193);
+      opacity: 0.9;
+      margin-bottom: 20rpx;
 
-      .title {
-        padding: 19rpx;
-        writing-mode: vertical-rl;
-        color: #fff2fc;
-        opacity: 0.9;
-        font-size: 34rpx;
-        font-weight: 700;
-        letter-spacing: 6px;
+      .titlemask {
+        float: left;
+        width: 80rpx;
+        height: 480rpx;
+        border-radius: 10rpx 0 0 10rpx;
+        background-color: #ec7678;
+        display: flex;
+        justify-content: center;
+        box-shadow: 5rpx 0 10rpx #b05772;
+
+        .title {
+          padding: 19rpx;
+          writing-mode: vertical-rl;
+          color: #fff2fc;
+          font-size: 28rpx;
+          font-weight: 500;
+          letter-spacing: 4px;
+        }
       }
-    }
 
-    .card-scroll {
-      float: right;
-      width: 638rpx;
-      height: 465rpx;
-      overflow-x: auto;
-      white-space: nowrap;
-      // background-color: skyblue;
-    }
+      .card-scroll {
+        float: right;
+        width: 638rpx;
+        height: 465rpx;
+        overflow-x: auto;
+        white-space: nowrap;
+        // background-color: skyblue;
+      }
 
-    .card-scroll-child {
-      display: flex;
-      flex-direction: row;
+      .card-scroll-child {
+        display: flex;
+        flex-direction: row;
+      }
     }
   }
 </style>

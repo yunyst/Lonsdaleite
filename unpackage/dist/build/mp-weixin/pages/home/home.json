@@ -4,6 +4,7 @@
     "home-tab-bar": "/components/HomeTabBar/HomeTabBar",
     "cleaning-content": "/pages/cleaning/cleaning",
     "makeup-content": "/pages/makeup/makeup",
-    "skincare-content": "/pages/skincare/skincare"
+    "skincare-content": "/pages/skincare/skincare",
+    "fragrance-content": "/pages/fragrance/fragrance"
   }
 }

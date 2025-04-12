@@ -6,12 +6,16 @@
         <image :src="banner.image" class="swiper-image" mode="scaleToFill"></image>
       </swiper-item>
     </swiper>
+    <view class="card">
+      <TransProductsCard :pageType="pageType"></TransProductsCard>
+    </view>
     <AllProduct></AllProduct>
   </view>
 </template>
 
 <script>
   import AllProduct from "../../components/AllProduct/AllProduct.vue";
+  import TransProductsCard from "../../components/TransProductsCard/TransProductsCard.vue"
   export default {
     data() {
       return {
@@ -21,7 +25,8 @@
       }
     },
     components: {
-      AllProduct
+      AllProduct,
+      TransProductsCard
     },
     methods: {
       // 获取banner数据
@@ -68,6 +73,7 @@
   .swiper {
     width: 100%;
     height: 400rpx;
+    margin-bottom: 10rpx;
   }
 
   .swiper-image {
@@ -88,5 +94,12 @@
     width: 15px;
     height: 5px;
     border-radius: 5px;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    margin: 20rpx 0 0 0;
+    padding: 15rpx;
   }
 </style>

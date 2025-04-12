@@ -56,14 +56,18 @@
     background-color: #fff;
     border-radius: 13rpx;
     box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.15);
+    overflow: hidden;
   }
 
   .product-img {
     width: 100%;
     height: auto;
+    max-height: 700rpx;
     border-radius: 10rpx;
     margin-bottom: 20rpx;
+    object-fit: contain;
   }
+
 
   .product-info {
     text-align: left;
@@ -73,7 +77,7 @@
   }
 
   .product-name {
-    font-size: 24rpx;
+    font-size: 25rpx;
     color: #333;
     white-space: nowrap;
     overflow: hidden;
@@ -81,6 +85,7 @@
     position: relative;
     line-height: 24px;
     height: 25px;
+    font-weight: 700;
     // border: #000000 1rpx solid;
   }
 

@@ -2,7 +2,6 @@
   "navigationBarTitleText": "",
   "usingComponents": {
     "product-card": "/components/ProductCard/ProductCard",
-    "all-goods-card": "/components/AllGoodsCard/AllGoodsCard",
-    "u-loadmore": "/node-modules/uview-ui/components/u-loadmore/u-loadmore"
+    "all-product": "/components/AllProduct/AllProduct"
   }
 }

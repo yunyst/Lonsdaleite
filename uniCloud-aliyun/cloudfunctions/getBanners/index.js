@@ -5,7 +5,7 @@ let db = uniCloud.database({
 exports.main = async (event, context) => {
   try {
     // 1. 参数验证与处理
-    const validPages = ['cleaning', 'skincare', 'makeup', 'fragrance', 'male'];
+    const validPages = ['cleaning', 'skincare', 'makeup', 'fragrance', 'bodycare', 'male'];
     const pageType = event.pageType || 'cleaning'; // 默认显示cleaning精选页
 
     if (!validPages.includes(pageType)) {
@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
         code: 400,
         message: '无效的页面参数',
         validPages, // 返回有效参数供前端参考
-        suggest: '可用值: cleaning, skincare, makeup, perfume, men'
+        suggest: '可用值: cleaning, skincare, makeup, fragrance,bodycare, men'
       };
     }
     // 2. 查询数据

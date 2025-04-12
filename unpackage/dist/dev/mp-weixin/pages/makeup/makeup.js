@@ -80,10 +80,13 @@ var components
 try {
   components = {
     ProductCard: function () {
-      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 259))
+      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 267))
+    },
+    TransProductsCard: function () {
+      return __webpack_require__.e(/*! import() | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then(__webpack_require__.bind(null, /*! @/components/TransProductsCard/TransProductsCard.vue */ 289))
     },
     AllProduct: function () {
-      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 266))
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 274))
     },
   }
 } catch (e) {
@@ -151,12 +154,17 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var AllProduct = function AllProduct() {
   Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 266));
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 274));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var ProductCard = function ProductCard() {
   __webpack_require__.e(/*! require.ensure | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard.vue */ 259));
+    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard.vue */ 267));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var TransProductsCard = function TransProductsCard() {
+  __webpack_require__.e(/*! require.ensure | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then((function () {
+    return resolve(__webpack_require__(/*! ../../components/TransProductsCard/TransProductsCard.vue */ 289));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -170,7 +178,8 @@ var _default = {
   },
   components: {
     AllProduct: AllProduct,
-    ProductCard: ProductCard
+    ProductCard: ProductCard,
+    TransProductsCard: TransProductsCard
   },
   methods: {
     // 获取banner数据
@@ -314,7 +323,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 237:
+/***/ 244:
 /*!*******************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/main.js?{"page":"pages%2Fmakeup%2Fmakeup"} ***!
   \*******************************************************************************/
@@ -336,5 +345,5 @@ createPage(_makeup.default);
 
 /***/ })
 
-},[[237,"common/runtime","common/vendor"]]]);
+},[[244,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/makeup/makeup.js.map

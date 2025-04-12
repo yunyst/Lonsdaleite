@@ -6,7 +6,7 @@ let db = uniCloud.database({
 exports.main = async (event, context) => {
   try {
     // 1. 参数验证与处理
-    const validPages = ['cleaning', 'makeup', 'skincare', 'fragrance', 'male']; // 可用页面类型
+    const validPages = ['cleaning', 'skincare', 'makeup', 'fragrance', 'bodycare', 'male'];
     const pageType = event.pageType || 'cleaning'; // 默认显示cleaning精选页
     const skip = event.skip || 0; // 分页参数，跳过多少条
     const limit = event.limit || 10; // 分页参数，每页多少条
@@ -16,7 +16,7 @@ exports.main = async (event, context) => {
         code: 400,
         message: '无效的页面参数',
         validPages, // 返回有效参数供前端参考
-        suggest: '可用值: cleaning, skincare, makeup, fragrance, male'
+        suggest: '可用值: cleaning, skincare, makeup, fragrance,bodycare, male'
       };
     }
 
@@ -27,7 +27,7 @@ exports.main = async (event, context) => {
       productsRes = await db.collection('products')
         .skip(skip) //跳过加载过的商品
         .limit(limit) // 限制每次加载limit个商品
-        .get();
+        .orderBy('sort_order', 'asc').get();
     } else {
       // 否则根据main_category筛选商品
       productsRes = await db.collection('products')
@@ -36,7 +36,7 @@ exports.main = async (event, context) => {
         })
         .skip(skip) //跳过加载过的商品
         .limit(limit) // 限制每次加载limit个商品
-        .get();
+        .orderBy('sort_order', 'asc').get();
     }
 
     const products = productsRes.data;

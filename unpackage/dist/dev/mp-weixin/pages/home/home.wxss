@@ -127,6 +127,14 @@
 
 
 
+
+
+
+
+
+
+
+
 /* Banner */
 .swiper.data-v-cd9462b4 {
   width: 100%;
@@ -254,18 +262,19 @@
 }
 .card.data-v-6335f1a6 {
   width: 100%;
-  height: 480rpx;
+  height: auto;
   margin: 20rpx 0 0 0;
   padding: 15rpx;
 }
-.card1.data-v-6335f1a6 {
+.card .card1.data-v-6335f1a6 {
   width: 725rpx;
   height: 480rpx;
   border-radius: 10rpx;
   background: linear-gradient(to bottom, #ffd0d3, #fe9193);
   opacity: 0.9;
+  margin-bottom: 20rpx;
 }
-.card1 .titlemask.data-v-6335f1a6 {
+.card .card1 .titlemask.data-v-6335f1a6 {
   float: left;
   width: 80rpx;
   height: 480rpx;
@@ -275,27 +284,31 @@
   justify-content: center;
   box-shadow: 5rpx 0 10rpx #b05772;
 }
-.card1 .titlemask .title.data-v-6335f1a6 {
+.card .card1 .titlemask .title.data-v-6335f1a6 {
   padding: 19rpx;
   -webkit-writing-mode: vertical-rl;
           writing-mode: vertical-rl;
   color: #fff2fc;
-  opacity: 0.9;
-  font-size: 34rpx;
-  font-weight: 700;
-  letter-spacing: 6px;
+  font-size: 28rpx;
+  font-weight: 500;
+  letter-spacing: 4px;
 }
-.card1 .card-scroll.data-v-6335f1a6 {
+.card .card1 .card-scroll.data-v-6335f1a6 {
   float: right;
   width: 638rpx;
   height: 465rpx;
   overflow-x: auto;
   white-space: nowrap;
 }
-.card1 .card-scroll-child.data-v-6335f1a6 {
+.card .card1 .card-scroll-child.data-v-6335f1a6 {
   display: flex;
   flex-direction: row;
 }
+
+
+
+
+
 
 
 
@@ -367,6 +380,7 @@
 .swiper.data-v-168d3374 {
   width: 100%;
   height: 400rpx;
+  margin-bottom: 10rpx;
 }
 .swiper-image.data-v-168d3374 {
   width: 100%;
@@ -384,6 +398,12 @@
   width: 15px;
   height: 5px;
   border-radius: 5px;
+}
+.card.data-v-168d3374 {
+  width: 100%;
+  height: auto;
+  margin: 20rpx 0 0 0;
+  padding: 15rpx;
 }
 
 
@@ -473,6 +493,106 @@
   width: 15px;
   height: 5px;
   border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Banner */
+.swiper.data-v-d55cc034 {
+  width: 100%;
+  height: 400rpx;
+}
+.swiper-image.data-v-d55cc034 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 修改 swiper 指示点样式 */
+.data-v-d55cc034 .wx-swiper-dot {
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255);
+}
+.data-v-d55cc034 .wx-swiper-dot-active {
+  background-color: #ffffff;
+  width: 15px;
+  height: 5px;
+  border-radius: 5px;
+}
+.card.data-v-d55cc034 {
+  width: 100%;
+  height: auto;
+  margin: 20rpx 0 0 0;
+  padding: 15rpx;
 }
 
 
