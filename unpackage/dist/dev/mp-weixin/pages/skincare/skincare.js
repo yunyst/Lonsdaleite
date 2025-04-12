@@ -80,10 +80,13 @@ var components
 try {
   components = {
     TransProductsCard: function () {
-      return __webpack_require__.e(/*! import() | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then(__webpack_require__.bind(null, /*! @/components/TransProductsCard/TransProductsCard.vue */ 289))
+      return __webpack_require__.e(/*! import() | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then(__webpack_require__.bind(null, /*! @/components/TransProductsCard/TransProductsCard.vue */ 304))
+    },
+    AdCard: function () {
+      return __webpack_require__.e(/*! import() | components/AdCard/AdCard */ "components/AdCard/AdCard").then(__webpack_require__.bind(null, /*! @/components/AdCard/AdCard.vue */ 204))
     },
     AllProduct: function () {
-      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 274))
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 289))
     },
   }
 } catch (e) {
@@ -151,12 +154,17 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var AllProduct = function AllProduct() {
   Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 274));
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 289));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var TransProductsCard = function TransProductsCard() {
   __webpack_require__.e(/*! require.ensure | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/TransProductsCard/TransProductsCard.vue */ 289));
+    return resolve(__webpack_require__(/*! ../../components/TransProductsCard/TransProductsCard.vue */ 304));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var AdCard = function AdCard() {
+  __webpack_require__.e(/*! require.ensure | components/AdCard/AdCard */ "components/AdCard/AdCard").then((function () {
+    return resolve(__webpack_require__(/*! ../../components/AdCard/AdCard.vue */ 204));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -169,7 +177,8 @@ var _default = {
   },
   components: {
     AllProduct: AllProduct,
-    TransProductsCard: TransProductsCard
+    TransProductsCard: TransProductsCard,
+    AdCard: AdCard
   },
   methods: {
     // 获取banner数据
@@ -266,7 +275,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 243:
+/***/ 250:
 /*!***********************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/main.js?{"page":"pages%2Fskincare%2Fskincare"} ***!
   \***********************************************************************************/
@@ -288,5 +297,5 @@ createPage(_skincare.default);
 
 /***/ })
 
-},[[243,"common/runtime","common/vendor"]]]);
+},[[250,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/skincare/skincare.js.map

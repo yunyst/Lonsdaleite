@@ -69,19 +69,24 @@
       }
     },
     {
-      "path" : "pages/fragrance/fragrance",
-      "style" : 
-      {
-        "navigationBarTitleText" : ""
+      "path": "pages/fragrance/fragrance",
+      "style": {
+        "navigationBarTitleText": ""
       }
     },
     {
-      "path" : "pages/bodycare/bodycare",
-      "style" : 
-      {
-        "navigationBarTitleText" : ""
+      "path": "pages/bodycare/bodycare",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/adPage/adPage",
+      "style": {
+        "navigationBarTitleText": ""
       }
     }
+
 
 
   ],

@@ -9,6 +9,7 @@
     <view class="card">
       <TransProductsCard :pageType="pageType"></TransProductsCard>
     </view>
+    <AdCard :pageType="pageType"></AdCard>
     <AllProduct></AllProduct>
   </view>
 </template>
@@ -16,6 +17,7 @@
 <script>
   import AllProduct from "../../components/AllProduct/AllProduct.vue";
   import TransProductsCard from "../../components/TransProductsCard/TransProductsCard.vue"
+  import AdCard from "../../components/AdCard/AdCard.vue";
   export default {
     data() {
       return {

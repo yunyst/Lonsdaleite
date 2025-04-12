@@ -18,6 +18,6 @@ import cleaning from './cleaning/cleaning.js'
 export default new Vuex.Store({
   modules: {
     home,
-    cleaning
+    cleaning,
   }
 })

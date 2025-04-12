@@ -1,0 +1,1 @@
+<view class="container data-v-4711cd86"><image class="image data-v-4711cd86" src="{{toPageImgUrl}}" mode="widthFix"></image><view class="view-brand data-v-4711cd86"><view data-event-opts="{{[['tap',[['handleToBrand',['$event']]]]]}}" class="view-text data-v-4711cd86" bindtap="__e">点击查看品牌详情</view></view></view>

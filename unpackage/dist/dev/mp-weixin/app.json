@@ -9,7 +9,8 @@
     "pages/makeup/makeup",
     "pages/cleaning/cleaning",
     "pages/fragrance/fragrance",
-    "pages/bodycare/bodycare"
+    "pages/bodycare/bodycare",
+    "pages/adPage/adPage"
   ],
   "subPackages": [
     {

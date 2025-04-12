@@ -101,7 +101,7 @@
           });
           if (result.result.code === 200) {
             this.cardProductsTransP = result.result.data || [];
-            console.log(this.cardProductsTransP)
+            // console.log(this.cardProductsTransP)
           } else {
             this.error = result.result.message || '获取数据失败';
           }
@@ -115,7 +115,7 @@
     },
     mounted() {
       this.fetchCardProductsTransP(this.pageType).then(() => {
-        console.log("card2 data successful load")
+        // console.log("card2 data successful load")
       })
     }
   }
