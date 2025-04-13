@@ -91,12 +91,11 @@
 /* right */
 .card-scroll.data-v-5a3d78e4 {
   position: absolute;
-  bottom: 0;
+  bottom: 30rpx;
   width: 100%;
   height: 465rpx;
   overflow-x: auto;
   white-space: nowrap;
-  border-radius: 0 0 30rpx 30rpx;
   overflow: hidden;
 }
 .card-scroll-child.data-v-5a3d78e4 {

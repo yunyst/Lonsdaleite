@@ -1564,13 +1564,62 @@ var _default = {
           }
         }, _callee, null, [[2, 9, 13, 16]]);
       }))();
+    },
+    fetchAdBrandProducts: function fetchAdBrandProducts(brand_id) {
+      var _this2 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+        var result;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.isLoading = true;
+                _this2.error = null;
+                _context2.prev = 2;
+                _context2.next = 5;
+                return uniCloud.callFunction({
+                  name: 'getAdBrandProducts',
+                  data: {
+                    brand_id: brand_id
+                  }
+                });
+              case 5:
+                result = _context2.sent;
+                if (result.result.code === 200) {
+                  _this2.cardProducts = result.result.data || [];
+                  console.log(_this2.cardProducts);
+                } else {
+                  _this2.error = result.result.message || '获取数据失败';
+                }
+                _context2.next = 13;
+                break;
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](2);
+                console.error('调用云函数失败:', _context2.t0);
+                _this2.error = '网络请求失败，请稍后重试';
+              case 13:
+                _context2.prev = 13;
+                _this2.isLoading = false;
+                return _context2.finish(13);
+              case 16:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[2, 9, 13, 16]]);
+      }))();
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
     this.fetchAdInfo(this.pageType).then(function () {
       console.log("adInfo successful load");
-      console.log(_this2.adInfo);
+      console.log(_this3.adInfo);
+      _this3.fetchAdBrandProducts(_this3.adInfo.brand_id).then(function () {
+        console.log("cardProducts successful load");
+        console.log(_this3.cardProducts);
+      });
     });
   }
 };

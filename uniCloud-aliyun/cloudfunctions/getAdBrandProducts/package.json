@@ -1,0 +1,7 @@
+{
+  "name": "getAdBrandProducts",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

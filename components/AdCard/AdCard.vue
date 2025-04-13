@@ -83,12 +83,41 @@
           this.isLoading = false;
         }
       },
+      async fetchAdBrandProducts(brand_id) {
+        this.isLoading = true;
+        this.error = null;
+        try {
+          // 调用云函数
+          const result = await uniCloud.callFunction({
+            name: 'getAdBrandProducts',
+            data: {
+              brand_id: brand_id
+            }
+          });
+          if (result.result.code === 200) {
+            this.cardProducts = result.result.data || [];
+            console.log(this.cardProducts)
+          } else {
+            this.error = result.result.message || '获取数据失败';
+          }
+        } catch (err) {
+          console.error('调用云函数失败:', err);
+          this.error = '网络请求失败，请稍后重试';
+        } finally {
+          this.isLoading = false;
+        }
+      }
     },
     mounted() {
       this.fetchAdInfo(this.pageType).then(() => {
         console.log("adInfo successful load");
         console.log(this.adInfo)
+        this.fetchAdBrandProducts(this.adInfo.brand_id).then(() => {
+          console.log("cardProducts successful load");
+          console.log(this.cardProducts)
+        })
       })
+
     }
   }
 </script>
@@ -171,12 +200,11 @@
   /* right */
   .card-scroll {
     position: absolute;
-    bottom: 0;
+    bottom: 30rpx;
     width: 100%;
     height: 465rpx;
     overflow-x: auto;
     white-space: nowrap;
-    border-radius: 0 0 30rpx 30rpx;
     overflow: hidden;
     // background-color: #000000;
   }
