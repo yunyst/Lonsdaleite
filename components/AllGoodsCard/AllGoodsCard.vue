@@ -19,7 +19,7 @@
           <text>{{ good.name }}</text>
         </view>
         <view class="product-price">
-          <text>¥{{ good.price }}</text>
+          <text>¥{{ (good.original_price*(1-good.discount)).toFixed(2) }}</text>
         </view>
       </view>
     </view>

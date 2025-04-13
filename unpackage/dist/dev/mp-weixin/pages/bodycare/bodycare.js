@@ -80,7 +80,7 @@ var components
 try {
   components = {
     ProductCard: function () {
-      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 282))
+      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 306))
     },
   }
 } catch (e) {
@@ -148,7 +148,7 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var ProductCard = function ProductCard() {
   __webpack_require__.e(/*! require.ensure | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard.vue */ 282));
+    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard.vue */ 306));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -170,6 +170,12 @@ var _default = {
     ProductCard: ProductCard
   },
   methods: {
+    goProductDetail: function goProductDetail(product) {
+      console.log("子组件传递过来的值：", product.product_id);
+      uni.navigateTo({
+        url: "/pages/productDetail/productDetail?productId=".concat(product.product_id)
+      });
+    },
     handleViewMore: function handleViewMore() {
       // console.log("view more")
       if (this.adInfo.toPageImgUrl) {
@@ -397,13 +403,13 @@ var components
 try {
   components = {
     TransProductsCard: function () {
-      return __webpack_require__.e(/*! import() | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then(__webpack_require__.bind(null, /*! @/components/TransProductsCard/TransProductsCard.vue */ 304))
+      return __webpack_require__.e(/*! import() | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then(__webpack_require__.bind(null, /*! @/components/TransProductsCard/TransProductsCard.vue */ 328))
     },
     AdCard: function () {
       return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! @/components/AdCard/AdCard.vue */ 204))
     },
     AllProduct: function () {
-      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 289))
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 313))
     },
   }
 } catch (e) {
@@ -460,7 +466,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uniCloud) {
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
@@ -472,12 +478,12 @@ var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/r
 var _AdCard = _interopRequireDefault(__webpack_require__(/*! ../../components/AdCard/AdCard.vue */ 204));
 var AllProduct = function AllProduct() {
   Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 289));
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 313));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var TransProductsCard = function TransProductsCard() {
   __webpack_require__.e(/*! require.ensure | components/TransProductsCard/TransProductsCard */ "components/TransProductsCard/TransProductsCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/TransProductsCard/TransProductsCard.vue */ 304));
+    return resolve(__webpack_require__(/*! ../../components/TransProductsCard/TransProductsCard.vue */ 328));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -538,6 +544,12 @@ var _default = {
           }
         }, _callee, null, [[2, 9, 13, 16]]);
       }))();
+    },
+    goProductDetail: function goProductDetail(product) {
+      console.log("子组件传递过来的值：", product.product_id);
+      uni.navigateTo({
+        url: "/pages/productDetail/productDetail?productId=".concat(product.product_id)
+      });
     }
   },
   mounted: function mounted() {
@@ -553,7 +565,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

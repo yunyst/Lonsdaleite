@@ -1,6 +1,6 @@
 //准备state对象——保存具体的数据
 const state = {
-  activeCategory: 'skincare',
+  activeCategory: 'cleaning',
   categoryTabs: [{
       label: '精选',
       value: 'cleaning'

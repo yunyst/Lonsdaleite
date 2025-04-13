@@ -30,7 +30,7 @@
     <!-- 全部商品（下拉加载/上拉加载） -->
     <AllProduct></AllProduct>
     <!-- 返回顶部（未完） -->
-    <u-back-top :scroll-top="scrollTop" top="600"></u-back-top>
+    <!-- <u-back-top :scroll-top="scrollTop" top="600"></u-back-top> -->
   </view>
 
 </template>
@@ -64,14 +64,12 @@
     },
 
     methods: {
-      // ×前往商品详情
+      // 前往商品详情
       goProductDetail(product) {
-        console.log("子组件传递过来的值：", product);
-        // uni.showToast({
-        //   title: '查看商品：' + product.name,
-        //   icon: 'none'
-        // })
-        // TODO: uni.navigateTo({ url: '/pages/detail/detail?id=' + product.id })
+        console.log("子组件传递过来的值：", product.product_id);
+        uni.navigateTo({
+          url: `/pages/productDetail/productDetail?productId=${product.product_id}`
+        })
       },
 
       // 获取banner数据

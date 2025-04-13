@@ -14,10 +14,11 @@ Vue.use(Vuex)
 
 import home from './home/index.js'
 import cleaning from './cleaning/cleaning.js'
-
+import productDetail from './productDetail/productDetail.js'
 export default new Vuex.Store({
   modules: {
     home,
     cleaning,
+    productDetail
   }
 })

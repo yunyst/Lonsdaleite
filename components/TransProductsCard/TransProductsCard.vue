@@ -11,7 +11,7 @@
       <scroll-view scroll-x="true" class="card-scroll" :style="boxShadow">
         <view class="card-scroll-child">
           <view v-for="product in cardProductsTransP" :key="product.product_id">
-            <view class="card-products-transp">
+            <view class="card-products-transp" @click="goProductDetail(product)">
               <view class="imgC">
                 <image :src="product.transpImageUrl" mode="heightFix" class="img"></image>
               </view>
@@ -112,6 +112,9 @@
           this.isLoading = false;
         }
       },
+      goProductDetail(product) {
+        this.$emit('goProductDetail', product)
+      }
     },
     mounted() {
       this.fetchCardProductsTransP(this.pageType).then(() => {

@@ -49,6 +49,12 @@
       ProductCard
     },
     methods: {
+      goProductDetail(product) {
+        console.log("子组件传递过来的值：", product.product_id);
+        uni.navigateTo({
+          url: `/pages/productDetail/productDetail?productId=${product.product_id}`
+        })
+      },
       handleViewMore() {
         // console.log("view more")
         if (this.adInfo.toPageImgUrl) {

@@ -69,14 +69,12 @@
       }
     },
     methods: {
-      // ×前往商品详情
+      // 前往商品详情
       goProductDetail(product) {
         console.log("子组件传递过来的值：", product);
-        // uni.showToast({
-        //   title: '查看商品：' + product.name,
-        //   icon: 'none'
-        // })
-        // TODO: uni.navigateTo({ url: '/pages/detail/detail?id=' + product.id })
+        uni.navigateTo({
+          url: `/pages/productDetail/productDetail?productId=${product.product_id}`
+        })
       },
 
       //实现瀑布流

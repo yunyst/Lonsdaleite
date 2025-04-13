@@ -21,7 +21,7 @@
           </view>
         </scroll-view>
       </view>
-      <TransProductsCard :pageType="pageType"></TransProductsCard>
+      <TransProductsCard :pageType="pageType" @goProductDetail="goProductDetail"></TransProductsCard>
     </view>
     <!-- 展示所有商品 -->
     <AllProduct></AllProduct>
@@ -93,7 +93,13 @@
         } finally {
           this.isLoading = false;
         }
-      }
+      },
+      goProductDetail(product) {
+        console.log("子组件传递过来的值：", product.product_id);
+        uni.navigateTo({
+          url: `/pages/productDetail/productDetail?productId=${product.product_id}`
+        })
+      },
     },
     mounted() {
       this.fetchBanners().then(() => {

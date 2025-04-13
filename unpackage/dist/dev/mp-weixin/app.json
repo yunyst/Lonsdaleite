@@ -10,7 +10,11 @@
     "pages/cleaning/cleaning",
     "pages/fragrance/fragrance",
     "pages/bodycare/bodycare",
-    "pages/adPage/adPage"
+    "pages/adPage/adPage",
+    "pages/login/login",
+    "pages/rules/agreement/agreement",
+    "pages/rules/privacy/privacy",
+    "pages/productDetail/productDetail"
   ],
   "subPackages": [
     {

@@ -83,7 +83,7 @@ try {
       return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! @/components/AdCard/AdCard.vue */ 204))
     },
     AllProduct: function () {
-      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 289))
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 313))
     },
   }
 } catch (e) {
@@ -152,7 +152,7 @@ var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/r
 var _AdCard = _interopRequireDefault(__webpack_require__(/*! ../../components/AdCard/AdCard.vue */ 204));
 var AllProduct = function AllProduct() {
   Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 289));
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 313));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -311,7 +311,7 @@ var components
 try {
   components = {
     ProductCard: function () {
-      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 282))
+      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 306))
     },
   }
 } catch (e) {
@@ -379,7 +379,7 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var ProductCard = function ProductCard() {
   __webpack_require__.e(/*! require.ensure | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard.vue */ 282));
+    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard.vue */ 306));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -401,6 +401,12 @@ var _default = {
     ProductCard: ProductCard
   },
   methods: {
+    goProductDetail: function goProductDetail(product) {
+      console.log("子组件传递过来的值：", product.product_id);
+      uni.navigateTo({
+        url: "/pages/productDetail/productDetail?productId=".concat(product.product_id)
+      });
+    },
     handleViewMore: function handleViewMore() {
       // console.log("view more")
       if (this.adInfo.toPageImgUrl) {

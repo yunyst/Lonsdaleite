@@ -80,13 +80,10 @@ var components
 try {
   components = {
     ProductCard: function () {
-      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 282))
+      return __webpack_require__.e(/*! import() | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then(__webpack_require__.bind(null, /*! @/components/ProductCard/ProductCard.vue */ 306))
     },
     AllProduct: function () {
-      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 289))
-    },
-    uBackTop: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-back-top/u-back-top */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-back-top/u-back-top")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-back-top/u-back-top.vue */ 296))
+      return Promise.all(/*! import() | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then(__webpack_require__.bind(null, /*! @/components/AllProduct/AllProduct.vue */ 313))
     },
   }
 } catch (e) {
@@ -143,7 +140,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
@@ -158,12 +155,12 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var ProductCard = function ProductCard() {
   __webpack_require__.e(/*! require.ensure | components/ProductCard/ProductCard */ "components/ProductCard/ProductCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 282));
+    return resolve(__webpack_require__(/*! ../../components/ProductCard/ProductCard */ 306));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var AllProduct = function AllProduct() {
   Promise.all(/*! require.ensure | components/AllProduct/AllProduct */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/AllProduct/AllProduct")]).then((function () {
-    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 289));
+    return resolve(__webpack_require__(/*! ../../components/AllProduct/AllProduct.vue */ 313));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -189,14 +186,12 @@ var _default = {
     };
   },
   methods: {
-    // ×前往商品详情
+    // 前往商品详情
     goProductDetail: function goProductDetail(product) {
-      console.log("子组件传递过来的值：", product);
-      // uni.showToast({
-      //   title: '查看商品：' + product.name,
-      //   icon: 'none'
-      // })
-      // TODO: uni.navigateTo({ url: '/pages/detail/detail?id=' + product.id })
+      console.log("子组件传递过来的值：", product.product_id);
+      uni.navigateTo({
+        url: "/pages/productDetail/productDetail?productId=".concat(product.product_id)
+      });
     },
     // 获取banner数据
     fetchBanners: function fetchBanners() {
@@ -302,7 +297,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"]))
 
 /***/ }),
 

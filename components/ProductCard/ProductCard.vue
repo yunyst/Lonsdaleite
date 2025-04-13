@@ -21,7 +21,7 @@
           <text>{{ product.name }}</text>
         </view>
         <view class="product-price">
-          <text>¥{{ product.price }}</text>
+          <text>¥{{ (product.original_price*(1-product.discount)).toFixed(2) }}</text>
         </view>
       </view>
     </view>
@@ -92,12 +92,18 @@
     width: 200rpx;
     // height: 40rpx;
     margin-bottom: 5rpx;
-    font-size: 22rpx;
+    font-size: 20rpx;
     color: #333;
     white-space: pre-wrap;
     // line-height: 24px;
-    height: 25px;
+    height: 28px;
     font-weight: 700;
+    display: -webkit-box;
+    /* 使用 flexbox 样式 */
+    -webkit-box-orient: vertical;
+    /* 垂直排列文本 */
+    -webkit-line-clamp: 2;
+    /* 限制显示的行数为2行，可以根据需要调整 */
   }
 
 

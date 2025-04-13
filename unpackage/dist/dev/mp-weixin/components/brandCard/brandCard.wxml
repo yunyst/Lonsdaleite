@@ -1,0 +1,1 @@
+<view class="brandcard-container data-v-5cbd7ff4"><view class="brandcard-section data-v-5cbd7ff4"><view class="content data-v-5cbd7ff4"><image class="img data-v-5cbd7ff4" src="{{brand.logo}}" mode="scaleToFill"></image></view></view></view>

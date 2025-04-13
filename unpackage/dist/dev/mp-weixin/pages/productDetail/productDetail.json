@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "u-subsection": "/node-modules/uview-ui/components/u-subsection/u-subsection",
+    "brand-card": "/components/brandCard/brandCard",
+    "u-tabbar": "/node-modules/uview-ui/components/u-tabbar/u-tabbar",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button"
+  }
+}
