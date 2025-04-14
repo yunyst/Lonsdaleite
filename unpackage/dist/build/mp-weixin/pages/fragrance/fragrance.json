@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "",
   "usingComponents": {
+    "ad-card": "/components/AdCard/AdCard",
     "all-product": "/components/AllProduct/AllProduct"
   }
 }

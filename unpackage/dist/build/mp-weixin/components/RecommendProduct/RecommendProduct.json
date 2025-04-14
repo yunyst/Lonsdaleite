@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "all-goods-card": "/components/AllGoodsCard/AllGoodsCard",
+    "u-loadmore": "/node-modules/uview-ui/components/u-loadmore/u-loadmore"
+  }
+}

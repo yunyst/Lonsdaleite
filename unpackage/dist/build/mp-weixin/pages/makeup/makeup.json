@@ -2,6 +2,7 @@
   "navigationBarTitleText": "",
   "usingComponents": {
     "product-card": "/components/ProductCard/ProductCard",
+    "trans-products-card": "/components/TransProductsCard/TransProductsCard",
     "all-product": "/components/AllProduct/AllProduct"
   }
 }

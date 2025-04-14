@@ -48,7 +48,7 @@
         ], // 2列
         //loadmore
         skip: 0,
-        limit: 10,
+        limit: 20,
         loading: false, //goods loading
         hasMore: true,
         loadMoreStatus: "loadmore", //控制u-load-more组件

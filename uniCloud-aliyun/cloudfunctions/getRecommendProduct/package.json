@@ -1,0 +1,7 @@
+{
+  "name": "getRecommendProduct",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

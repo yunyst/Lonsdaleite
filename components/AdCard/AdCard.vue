@@ -1,5 +1,5 @@
 <template>
-  <view class="container" :style="{ backgroundColor: adInfo.themeColor }">
+  <view class="container" :style="{ backgroundColor: adInfo.themeColor }" v-if="adInfo">
 
     <view class="ad-image" @click="handleViewMore">
       <image :src="adInfo.imageUrl" mode="scaleToFill" style="width: 100%;">

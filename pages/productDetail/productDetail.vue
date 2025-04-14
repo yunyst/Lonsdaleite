@@ -1,14 +1,18 @@
 <template>
-  <view class="container">
+  <view class="container" v-if="product">
     <!-- 头部 -->
-    <u-subsection :list="list" :current="curNow" @change="sectionChange" :animation="true" font-size="25rpx"
-      :bold="true" active-color="black" inactive-color="gray" class="sub"></u-subsection>
+    <!-- -1是因为吸顶的时候有一个缝隙 -->
+    <u-sticky offset-top="-1">
+      <u-subsection :list="list" :current="curNow" @change="sectionChange" :animation="true" font-size="25rpx"
+        :bold="true" active-color="black" inactive-color="gray"></u-subsection>
+    </u-sticky>
 
-    <view class="imgContainer">
+
+    <view class="imgContainer" id="product">
       <image :src="product.info.imageUrl" mode="heightFix"></image>
     </view>
 
-    <view class="info-container" v-if="product">
+    <view class="info-container">
       <view class="info-section">
         <view class="price">
           ￥{{(product.info.original_price * (1 - product.info.discount)).toFixed(2)}}
@@ -37,16 +41,66 @@
             100%官方正品 ~ 顺丰EMS速递 · 丰富赠品 ~ 退货保障 · 安全支付
           </view>
         </view>
+        <view class="data-info">
+          <view class="rating">
+            <view class="label">商品评分:</view>
+            <view class="value">{{product.detail.rating}}</view>
+          </view>
+          <view class="stock">
+            <view class="label">商品库存:</view>
+            <view class="value">{{product.detail.stock}}</view>
+          </view>
+          <view class="sold">
+            <view class="label">商品已售:</view>
+            <view class="value">{{product.detail.sold}}</view>
+          </view>
+        </view>
       </view>
     </view>
-    <brandCard v-if="product" :brandId="product.info.brand_id"></brandCard>
-    <view class="detail-container">
+
+    <brandCard v-if="product" :brandId="product.info.brand_id" id="brand"></brandCard>
+    <view class="detail-container" id="detail">
       <view class="detail-section">
-        商品详情
+        <view class="title">
+          商品详情
+        </view>
+        <view class="content">
+          <view class="item" v-if="product.info.en_name">
+            <view class="label">产品名称：</view>
+            <view class="value">{{product.info.en_name}}</view>
+          </view>
+          <view class="item" v-if="product.detail.description">
+            <view class="label">产品描述：</view>
+            <view class="value">{{product.detail.description}}</view>
+          </view>
+          <view class="item">
+            <view class="label">产品分类：</view>
+            <view class="value">{{product.info.main_category}}&nbsp;{{product.info.sub_category}}</view>
+          </view>
+          <view class="item" v-if="product.detail.ingredients">
+            <view class="label">产品成分：</view>
+            <view class="value">{{product.detail.ingredients}}</view>
+          </view>
+          <view class="item" v-if="product.detail.how_to_use">
+            <view class="label">产品使用：</view>
+            <view class="value">{{product.detail.how_to_use}}</view>
+          </view>
+          <view class="item" v-if="product.detail.specifications">
+            <view class="label">产品规格：</view>
+            <view class="value">{{product.detail.specifications}}</view>
+          </view>
+          <view class="item">
+            <view class="label">产品货号：</view>
+            <view class="value">{{product.info.sku}}</view>
+          </view>
+        </view>
       </view>
     </view>
-    <u-tabbar placeholder>
-      <u-button type="primary" text="立即购买"></u-button>
+    <RecommendProduct :productInfo="product.info" id="recommend"></RecommendProduct>
+
+    <u-tabbar placeholder :bg-color="bgcolor" :border-top="false">
+      <u-button type="primary" text="加入购物车" shape="circle"></u-button>
+      <u-button type="primary" text="立即购买" shape="circle"></u-button>
     </u-tabbar>
   </view>
 </template>
@@ -56,17 +110,20 @@
     mapState
   } from 'vuex'
   import brandCard from '../../components/brandCard/brandCard.vue'
+  import RecommendProduct from '../../components/RecommendProduct/RecommendProduct.vue'
   export default {
     data() {
       return {
+        bgcolor: "#f5f5f5",
         product_id: '',
         product: null,
         curNow: 0,
-
+        isLoading: false
       }
     },
     components: {
-      brandCard
+      brandCard,
+      RecommendProduct
     },
     computed: {
       ...mapState({
@@ -80,6 +137,7 @@
     mounted() {},
     methods: {
       async fetchProductDetail(product_id) {
+        this.isLoading = true
         const res = await uniCloud.callFunction({
           name: 'getProductDetail',
           data: {
@@ -87,10 +145,38 @@
           }
         })
         this.product = res.result.data
+        this.isLoading = false
       },
-      sectionChange() {
-
+      sectionChange(index) {
+        this.curNow = index;
+        this.scrollToSection(this.curNow);
+      },
+      scrollToSection(index) {
+        this.$nextTick(() => {
+          const refId = this.list[index].ref
+          // console.log("refId", refId)
+          uni.createSelectorQuery().select(`#${refId}`).boundingClientRect(rect => {
+            // console.log("rect", rect)
+            if (rect) {
+              uni.createSelectorQuery().selectViewport().scrollOffset(res => {
+                const currentScrollTop = res.scrollTop
+                const targetScrollTop = currentScrollTop + rect.top - this.$rpxToPx(60)
+                const scrollSpeed = 100
+                const duration = Math.min(Math.abs(targetScrollTop - currentScrollTop) / this.$rpxToPx(
+                    scrollSpeed) * 1000,
+                  1000)
+                // console.log("currentScrollTop", currentScrollTop)
+                // console.log("targetScrollTop", targetScrollTop)
+                uni.pageScrollTo({
+                  scrollTop: targetScrollTop,
+                  duration: duration
+                });
+              }).exec()
+            }
+          }).exec()
+        })
       }
+
     }
   }
 </script>
@@ -235,32 +321,109 @@
           height: 30rpx;
           padding: 20rpx;
           line-height: 30rpx;
-          font-size: 20rpx;
-          color: #b5b5b5;
+          font-size: 18rpx;
+          color: #242424;
           border-top: 1rpx solid #b5b5b5;
         }
+      }
+    }
+
+    .data-info {
+      width: 150rpx;
+      height: 100rpx;
+      margin: 24rpx;
+      position: absolute;
+      top: 0rpx;
+      right: 0rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 20rpx;
+      color: dimgray;
+
+      .rating,
+      .stock,
+      .sold {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2px;
+      }
+
+      .label {
+        width: 150rpx;
+      }
+
+      .value {
+        text-align: right;
       }
     }
   }
 
 
   .detail-container {
-    margin: 10rpx 0;
+    margin: 20rpx 0;
     width: 100%;
-    height: 500rpx;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .detail-section {
       width: 710rpx;
-      height: 500rpx;
+      height: auto;
       border-radius: 20rpx;
       display: flex;
       justify-content: center;
       flex-direction: column;
-      position: relative;
       background-color: #fff;
+      overflow: hidden;
     }
+
+    .title {
+      width: 100%;
+      height: 40rpx;
+      font-size: 30rpx;
+      padding: 20rpx;
+      border-bottom: #d1d1d1 1rpx solid;
+    }
+
+    .content {
+      width: 680rpx;
+      display: flex;
+      flex-direction: column;
+      padding: 20rpx;
+
+      /* 垂直排列 */
+      .item {
+        display: flex;
+        margin-bottom: 10px;
+        /* 每个条目的间距 */
+        align-items: center;
+        /* 确保内容垂直居中 */
+      }
+
+      .label {
+        margin-left: 20rpx;
+        font-size: 28rpx;
+        width: 200rpx;
+        /* 设置 label 的宽度，确保它们对齐 */
+        font-weight: bold;
+        /* 让label部分加粗 */
+        color: #666;
+      }
+
+      .value {
+        font-size: 24rpx;
+        flex: 1;
+        /* 让value部分占满剩余空间 */
+        color: #333;
+        /* 设置value字体颜色 */
+        text-align: left;
+        /* value部分左对齐 */
+
+      }
+    }
+
+
   }
 </style>

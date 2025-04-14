@@ -4,6 +4,19 @@
       <view class="content">
         <image class="img" :src="brand.logo" mode="scaleToFill"></image>
       </view>
+      <view class="brandInfo" v-if="brand">
+        <view class="title">
+          {{brand.en_name.toUpperCase()}}
+        </view>
+        <view class="info">
+          该品牌有{{brand.count}}件在售商品
+        </view>
+      </view>
+      <view class="viewmore">
+        <view class="text">
+          进入品牌
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -69,8 +82,8 @@
       height: 200rpx;
       border-radius: 20rpx;
       display: flex;
-      justify-content: center;
-      flex-direction: column;
+      align-items: center;
+
       background-color: #fff;
 
       .content {
@@ -81,6 +94,46 @@
           margin-left: 10rpx;
           width: 180rpx;
           height: 140rpx;
+        }
+      }
+
+      .brandInfo {
+        width: auto;
+        max-width: 400rpx;
+        height: 100rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .title {
+          font-size: 22rpx;
+          line-height: 44rpx;
+          font-family: 'boldonse', sans-serif;
+        }
+
+        .info {
+          font-size: 24rpx;
+          color: dimgray;
+          line-height: 40rpx;
+        }
+      }
+
+      .viewmore {
+        margin-left: auto;
+        margin-right: 20rpx;
+        background-color: #000000;
+        width: 140rpx;
+        height: 40rpx;
+        border-radius: 20rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2rpx 4rpx 10rpx #949494;
+
+        .text {
+          color: #fff;
+          font-size: 24rpx;
+          line-height: 26rpx;
         }
       }
     }
