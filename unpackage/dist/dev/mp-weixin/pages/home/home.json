@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Home",
+  "navigationBarTitleText": "首页",
   "usingComponents": {
     "home-tab-bar": "/components/HomeTabBar/HomeTabBar",
     "cleaning-content": "/pages/cleaning/cleaning",

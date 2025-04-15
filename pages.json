@@ -20,7 +20,7 @@
     {
       "path": "pages/home/home",
       "style": {
-        "navigationBarTitleText": "Home"
+        "navigationBarTitleText": "首页"
       }
     },
     {
@@ -33,20 +33,20 @@
     {
       "path": "pages/404/404",
       "style": {
-        "navigationBarTitleText": "404"
+        "navigationBarTitleText": "错误"
       }
     },
     {
       "path": "pages/account/account",
       "style": {
-        "navigationBarTitleText": "Account",
+        "navigationBarTitleText": "个人中心",
         "enablePullDownRefresh": true
       }
     },
     {
       "path": "pages/cart/cart",
       "style": {
-        "navigationBarTitleText": "Cart",
+        "navigationBarTitleText": "购物车",
         "enablePullDownRefresh": true
       }
     },
@@ -82,12 +82,6 @@
     },
     {
       "path": "pages/adPage/adPage",
-      "style": {
-        "navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/login/login",
       "style": {
         "navigationBarTitleText": ""
       }
@@ -159,7 +153,8 @@
         "pagePath": "pages/account/account",
         "iconPath": "/static/icons/person.png",
         "selectedIconPath": "/static/icons/pesron_fill.png",
-        "text": "Mine"
+        "text": "Mine",
+        "navigationBarTitleText": "Mine"
       }
     ]
   }

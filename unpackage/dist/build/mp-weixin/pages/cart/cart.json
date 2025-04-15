@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Cart",
+  "navigationBarTitleText": "购物车",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "u-button": "/node-modules/uview-ui/components/u-button/u-button"

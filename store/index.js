@@ -15,10 +15,13 @@ Vue.use(Vuex)
 import home from './home/index.js'
 import cleaning from './cleaning/cleaning.js'
 import productDetail from './productDetail/productDetail.js'
+import login from './login/login.js'
 export default new Vuex.Store({
   modules: {
     home,
     cleaning,
-    productDetail
-  }
+    productDetail,
+    login
+  },
+  strict: process.env.NODE_ENV !== 'production' // 开发环境严格模式
 })
