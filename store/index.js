@@ -16,12 +16,14 @@ import home from './home/index.js'
 import cleaning from './cleaning/cleaning.js'
 import productDetail from './productDetail/productDetail.js'
 import login from './login/login.js'
+import navigation from './navigation/navigation.js'
 export default new Vuex.Store({
   modules: {
     home,
     cleaning,
     productDetail,
-    login
+    login,
+    navigation,
   },
   strict: process.env.NODE_ENV !== 'production' // 开发环境严格模式
 })

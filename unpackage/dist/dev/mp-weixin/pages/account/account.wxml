@@ -1,1 +1,1 @@
-<view class="data-v-fe10413c"><login vue-id="c3f6e438-1" class="data-v-fe10413c" bind:__l="__l"></login></view>
+<view class="data-v-fe10413c"><block wx:if="{{showLoginModal}}"><login vue-id="c3f6e438-1" class="data-v-fe10413c" bind:__l="__l"></login></block><block wx:else><view class="container">personal center</view></block></view>

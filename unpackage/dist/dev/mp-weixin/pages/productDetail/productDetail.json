@@ -2,6 +2,7 @@
   "navigationBarTitleText": "商品详情",
   "navigationBarTextStyle": "black",
   "usingComponents": {
+    "login": "/components/Login/Login",
     "u-sticky": "/node-modules/uview-ui/components/u-sticky/u-sticky",
     "u-subsection": "/node-modules/uview-ui/components/u-subsection/u-subsection",
     "brand-card": "/components/brandCard/brandCard",

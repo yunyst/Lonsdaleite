@@ -2,10 +2,15 @@
   <view class="container">
     <view class="tab">
       <view class="back" @click="back" style="color: gray;font-size:20rpx;">X</view>
-      <view class="tip" @click="contactus">
+      <view class="tip" @click="contactUs">
         联系我们
       </view>
     </view>
+
+    <CenterPopup :show="isContactPopupShow" :content="'请拨打人工客服：18891801097'" @close="isContactPopupShow = false"
+      @confirm="isContactPopupShow = false"></CenterPopup>
+
+
     <view class="title-container">
       <view class="title">
         LONSDALEITE
@@ -52,30 +57,38 @@
         <u-switch size="30" v-model="isAgree" active-color="gray"></u-switch>
       </view>
       <view class="agreement-links">
-        <view @click="isAgree = !isAgree">登录即代表同意</view>
+        <view @click="isAgree = !isAgree">{{select1}}即代表同意</view>
         <view class="link" @click="goToAgreement('agreement')">《用户服务协议》</view>
         <view class="link" @click="goToAgreement('privacy')">《隐私政策》</view>
       </view>
     </view>
     <view class="swift-way">
-      <view class="other-way">登录</view>
+      <view class="other-way" @click="changeSelect">{{select2}}</view>
       <view class="split">|</view>
-      <view class="forget-pw">忘记密码</view>
+      <view class="forget-pw" @click="forgetPw">忘记密码</view>
     </view>
   </view>
 </template>
 
 <script>
   import {
-    mapState
+    mapState,
+    mapActions
   } from 'vuex';
+  import CenterPopup from '../CenterPopup/CenterPopup.vue';
   export default {
     computed: {
       ...mapState({
-        validEmails: state => state.login.validEmails
+        validEmails: state => state.login.validEmails,
+        showLoginModal: state => state.login.showLoginModal,
+        loginTrigger: state => state.login.loginTrigger
       }),
       allInfoValid() {
-        return this.errorMessage == '' && this.passwordError == '' && this.isAgree
+        return this.isInputValueValid && this.isPasswordValid && this.isAgree
+      },
+      // 计算是否为注册方式
+      isRegister() {
+        return this.select1 === '注册';
       }
     },
     data() {
@@ -84,31 +97,45 @@
         password: '', // 用户输入的密码
         errorMessage: '', // 错误提示
         passwordError: '', // 密码错误消息
+        isInputValueValid: false, //用户输入的手机号或邮箱是否有效
+        isPasswordValid: false, // 用户输入的密码是否有效
         isAgree: false,
         showEmailSuggestions: false,
         emailSuggestions: ["gmail.com", "qq.com", "outlook.com", "163.com", "sina.com"], // 可用邮箱后缀
-        // debounceTimer: null, // 用于存储定时器的引用
         validateTimer: null,
+        validationInProgress: false, //验证状态
+        //弹窗提示信息
+        isContactPopupShow: false,
+        //register / login
+        select1: '注册',
+        select2: '登录',
       }
     },
-
+    components: {
+      CenterPopup
+    },
     methods: {
+      ...mapActions(['submitLogin', 'closeLoginModal']),
+
       //用户输入@后缀检测，失去焦点隐藏，重新获得焦点再次检测@
       handleFocus() {
         // 只在真正需要时触发验证
-        if (this.inputValue.includes("@")) {
+        if (this.inputValue.includes("@") && !this.validationInProgress) {
+          this.validationInProgress = true;
           this.validateInput();
         }
       },
       validateInput() {
         if (!this.inputValue) {
           this.errorMessage = '';
+          this.validationInProgress = false; // 结束验证状态
           return;
         }
         clearTimeout(this.validateTimer);
         this.validateTimer = setTimeout(() => {
           this.validAccountFormat();
-          if (this.errorMessage == '') {
+
+          if (this.isInputValueValid == true) {
             this.showEmailSuggestions = false; // 如果已经有效，隐藏建议
           } else {
             const atIndex = this.inputValue.indexOf("@");
@@ -119,26 +146,33 @@
               this.showEmailSuggestions = false;
             }
           }
+          this.validationInProgress = false; // 结束验证状态
         }, 200);
       },
       // 根据用户输入的 @ 后缀部分过滤可用后缀
       filterEmailSuggestions(domainPart) {
-        if (domainPart.length === 0) {
+        if (domainPart.length == 0) {
           this.emailSuggestions = this.validEmails
           this.showEmailSuggestions = true;
         } else {
           // 过滤
-          this.showEmailSuggestions = true;
-          this.emailSuggestions = this.validEmails.filter((suggestion) =>
+          const tempemailSuggestions = this.validEmails.filter((suggestion) =>
             suggestion.includes(domainPart)
           );
+          this.emailSuggestions = tempemailSuggestions;
+          if (this.emailSuggestions.length == 0) {
+            this.showEmailSuggestions = false;
+          } else {
+            this.showEmailSuggestions = true;
+          }
         }
       },
       // 用户点击某个建议后，自动填充到输入框
       selectEmailSuggestion(suggestion) {
         this.inputValue = this.inputValue.split("@")[0] + "@" + suggestion;
         this.showEmailSuggestions = false;
-        this.emailSuggestions = this.validEmails
+        this.emailSuggestions = this.validEmails;
+        this.validateInput()
       },
       validAccountFormat() {
         // 正则表达式：手机号和邮箱格式
@@ -148,15 +182,18 @@
         // 判断输入的内容是否为手机号或邮箱
         if (phoneRegex.test(this.inputValue)) {
           this.errorMessage = ''; // 如果是手机号格式正确，则不显示错误
+          this.isInputValueValid = true;
         } else if (emailRegex.test(this.inputValue)) {
           this.errorMessage = ''; // 如果是邮箱格式正确，则不显示错误
+          this.isInputValueValid = true;
         } else {
           this.errorMessage = '请输入有效的手机号或邮箱'; // 格式错误时显示提示
+          this.isInputValueValid = false;
         }
       },
       validateBlur() {
         if (this.showEmailSuggestions) {
-          this.showEmailSuggestions = false
+          this.showEmailSuggestions = false;
         }
       },
       validPasswordFormat() {
@@ -167,12 +204,12 @@
           this.passwordError = ''; // 如果密码为空，移除错误消息
           return;
         }
-
         if (this.password.length < 6 || this.password.length > 20) {
           this.passwordError = '密码长度应为6到20个字符';
         } else if (!passwordRegex.test(this.password)) {
           this.passwordError = '密码只能包含字母、数字和下划线';
         } else {
+          this.isPasswordValid = true;
           this.passwordError = ''; // 密码符合要求时，不显示错误
         }
       },
@@ -185,16 +222,46 @@
           url: routes[type]
         });
       },
-      register() {
-        console.log("user click register")
-        console.log("submit data to database")
-      },
-      contactus() {
-        console.log("contactus")
-      },
       back() {
-        console.log("back")
-      }
+        // console.log("back")
+        // console.log("console.log(this.loginTrigger)", this.loginTrigger)
+        if (this.loginTrigger === 'tab') {
+          uni.switchTab({
+            url: this.$store.state.navigation.lastTabBarIndex === 0 ?
+              '/pages/home/home' : '/pages/cart/cart'
+          });
+        } else {
+          this.closeLoginModal()
+        }
+      },
+      contactUs() {
+        console.log("contactus")
+        this.isContactPopupShow = true
+      },
+      changeSelect() {
+        let tempSelect1 = this.select1
+        let tempSelect2 = this.select2
+        this.select1 = tempSelect2
+        this.select2 = tempSelect1
+        if (this.inputValue) {
+          this.inputValue = ''
+        }
+        if (this.password) {
+          this.password = ''
+        }
+
+      },
+      forgetPw() {
+        this.isContactPopupShow = true
+      },
+      register() {
+        const payload = {
+          isRegister: this.isRegister,
+          account: this.inputValue,
+          password: this.password,
+        }
+        this.submitLogin(payload)
+      },
     }
   }
 </script>

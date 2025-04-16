@@ -1,0 +1,161 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 遮罩层动画 */
+.fade-enter-active.data-v-8415b918,
+.fade-leave-active.data-v-8415b918 {
+  transition: opacity 0.5s;
+}
+.fade-enter.data-v-8415b918,
+.fade-leave-to.data-v-8415b918 {
+  opacity: 0;
+}
+/* 弹窗动画 */
+.zoom-enter-active.data-v-8415b918 {
+  -webkit-animation: zoomIn-data-v-8415b918 0.5s;
+          animation: zoomIn-data-v-8415b918 0.5s;
+}
+.zoom-leave-active.data-v-8415b918 {
+  -webkit-animation: zoomOut-data-v-8415b918 0.5s;
+          animation: zoomOut-data-v-8415b918 0.5s;
+}
+@-webkit-keyframes zoomIn-data-v-8415b918 {
+from {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+}
+to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+}
+@keyframes zoomIn-data-v-8415b918 {
+from {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+}
+to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+}
+@-webkit-keyframes zoomOut-data-v-8415b918 {
+from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+to {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+}
+}
+@keyframes zoomOut-data-v-8415b918 {
+from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+to {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+}
+}
+.popup-mask.data-v-8415b918 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(188, 188, 188, 0.5);
+  z-index: 999;
+}
+.popup-container.data-v-8415b918 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600rpx;
+  background-color: #fff;
+  border-radius: 40rpx;
+  overflow: hidden;
+  z-index: 1000;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.2);
+}
+.popup-content.data-v-8415b918 {
+  padding: 40rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #333;
+}
+.popup-footer.data-v-8415b918 {
+  border-top: 1rpx solid #eee;
+  padding: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+.popup-footer button.data-v-8415b918 {
+  background-color: #000000;
+  color: white;
+  margin-top: 5rpx;
+  width: 40%;
+  height: 56rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

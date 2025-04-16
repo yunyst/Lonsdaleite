@@ -1,107 +1,113 @@
 <template>
   <view class="container" v-if="product">
-    <!-- 头部 -->
-    <!-- -1是因为吸顶的时候有一个缝隙 -->
-    <u-sticky offset-top="-1">
-      <u-subsection :list="list" :current="curNow" @change="sectionChange" :animation="true" font-size="25rpx"
-        :bold="true" active-color="black" inactive-color="gray"></u-subsection>
-    </u-sticky>
+    <Login v-if="showLoginModal" />
+
+    <view class="real-content-container" v-else>
+      <!-- 头部 -->
+      <!-- -1是因为吸顶的时候有一个缝隙 -->
+      <u-sticky offset-top="-1">
+        <u-subsection :list="list" :current="curNow" @change="sectionChange" :animation="true" font-size="25rpx"
+          :bold="true" active-color="black" inactive-color="gray"></u-subsection>
+      </u-sticky>
 
 
-    <view class="imgContainer" id="product">
-      <image :src="product.info.imageUrl" mode="heightFix"></image>
-    </view>
+      <view class="imgContainer" id="product">
+        <image :src="product.info.imageUrl" mode="heightFix"></image>
+      </view>
 
-    <view class="info-container">
-      <view class="info-section">
-        <view class="price">
-          ￥{{(product.info.original_price * (1 - product.info.discount)).toFixed(2)}}
+      <view class="info-container">
+        <view class="info-section">
+          <view class="price">
+            ￥{{(product.info.original_price * (1 - product.info.discount)).toFixed(2)}}
+          </view>
+          <view class="discountInf">
+            价值￥{{product.info.original_price}},折扣优惠{{product.info.discount*100}}%
+          </view>
+          <view class="title-info">
+            <view class="title">
+              {{product.info.name}}
+            </view>
+            <view class="description">
+              {{product.detail.description}}
+            </view>
+          </view>
+          <view class="tagProduct">
+            <view class="new" v-if="product.info.is_new === 'TRUE'">
+              <text>New</text>
+            </view>
+            <view class="only" v-if="product.info.is_exclusive === 'TRUE'">
+              <text>独家</text>
+            </view>
+          </view>
+          <view class="more-info">
+            <view class="text">
+              100%官方正品 ~ 顺丰EMS速递 · 丰富赠品 ~ 退货保障 · 安全支付
+            </view>
+          </view>
+          <view class="data-info">
+            <view class="rating">
+              <view class="label">商品评分:</view>
+              <view class="value">{{product.detail.rating}}</view>
+            </view>
+            <view class="stock">
+              <view class="label">商品库存:</view>
+              <view class="value">{{product.detail.stock}}</view>
+            </view>
+            <view class="sold">
+              <view class="label">商品已售:</view>
+              <view class="value">{{product.detail.sold}}</view>
+            </view>
+          </view>
         </view>
-        <view class="discountInf">
-          价值￥{{product.info.original_price}},折扣优惠{{product.info.discount*100}}%
-        </view>
-        <view class="title-info">
+      </view>
+
+      <brandCard v-if="product" :brandId="product.info.brand_id" id="brand"></brandCard>
+      <view class="detail-container" id="detail">
+        <view class="detail-section">
           <view class="title">
-            {{product.info.name}}
+            商品详情
           </view>
-          <view class="description">
-            {{product.detail.description}}
-          </view>
-        </view>
-        <view class="tagProduct">
-          <view class="new" v-if="product.info.is_new === 'TRUE'">
-            <text>New</text>
-          </view>
-          <view class="only" v-if="product.info.is_exclusive === 'TRUE'">
-            <text>独家</text>
-          </view>
-        </view>
-        <view class="more-info">
-          <view class="text">
-            100%官方正品 ~ 顺丰EMS速递 · 丰富赠品 ~ 退货保障 · 安全支付
-          </view>
-        </view>
-        <view class="data-info">
-          <view class="rating">
-            <view class="label">商品评分:</view>
-            <view class="value">{{product.detail.rating}}</view>
-          </view>
-          <view class="stock">
-            <view class="label">商品库存:</view>
-            <view class="value">{{product.detail.stock}}</view>
-          </view>
-          <view class="sold">
-            <view class="label">商品已售:</view>
-            <view class="value">{{product.detail.sold}}</view>
-          </view>
-        </view>
-      </view>
-    </view>
-
-    <brandCard v-if="product" :brandId="product.info.brand_id" id="brand"></brandCard>
-    <view class="detail-container" id="detail">
-      <view class="detail-section">
-        <view class="title">
-          商品详情
-        </view>
-        <view class="content">
-          <view class="item" v-if="product.info.en_name">
-            <view class="label">产品名称：</view>
-            <view class="value">{{product.info.en_name}}</view>
-          </view>
-          <view class="item" v-if="product.detail.description">
-            <view class="label">产品描述：</view>
-            <view class="value">{{product.detail.description}}</view>
-          </view>
-          <view class="item">
-            <view class="label">产品分类：</view>
-            <view class="value">{{product.info.main_category}}&nbsp;{{product.info.sub_category}}</view>
-          </view>
-          <view class="item" v-if="product.detail.ingredients">
-            <view class="label">产品成分：</view>
-            <view class="value">{{product.detail.ingredients}}</view>
-          </view>
-          <view class="item" v-if="product.detail.how_to_use">
-            <view class="label">产品使用：</view>
-            <view class="value">{{product.detail.how_to_use}}</view>
-          </view>
-          <view class="item" v-if="product.detail.specifications">
-            <view class="label">产品规格：</view>
-            <view class="value">{{product.detail.specifications}}</view>
-          </view>
-          <view class="item">
-            <view class="label">产品货号：</view>
-            <view class="value">{{product.info.sku}}</view>
+          <view class="content">
+            <view class="item" v-if="product.info.en_name">
+              <view class="label">产品名称：</view>
+              <view class="value">{{product.info.en_name}}</view>
+            </view>
+            <view class="item" v-if="product.detail.description">
+              <view class="label">产品描述：</view>
+              <view class="value">{{product.detail.description}}</view>
+            </view>
+            <view class="item">
+              <view class="label">产品分类：</view>
+              <view class="value">{{product.info.main_category}}&nbsp;{{product.info.sub_category}}</view>
+            </view>
+            <view class="item" v-if="product.detail.ingredients">
+              <view class="label">产品成分：</view>
+              <view class="value">{{product.detail.ingredients}}</view>
+            </view>
+            <view class="item" v-if="product.detail.how_to_use">
+              <view class="label">产品使用：</view>
+              <view class="value">{{product.detail.how_to_use}}</view>
+            </view>
+            <view class="item" v-if="product.detail.specifications">
+              <view class="label">产品规格：</view>
+              <view class="value">{{product.detail.specifications}}</view>
+            </view>
+            <view class="item">
+              <view class="label">产品货号：</view>
+              <view class="value">{{product.info.sku}}</view>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-    <RecommendProduct :productInfo="product.info" id="recommend"></RecommendProduct>
+      <RecommendProduct :productInfo="product.info" id="recommend"></RecommendProduct>
 
-    <u-tabbar placeholder :bg-color="bgcolor" :border-top="false">
-      <u-button type="primary" text="加入购物车" shape="circle"></u-button>
-      <u-button type="primary" text="立即购买" shape="circle"></u-button>
-    </u-tabbar>
+      <u-tabbar placeholder :bg-color="bgcolor" :border-top="false">
+        <u-button type="primary" text="加入购物车" shape="circle" @click="addToCart"></u-button>
+        <u-button type="primary" text="立即购买" shape="circle" @click="purchase"></u-button>
+      </u-tabbar>
+
+    </view>
+
   </view>
 </template>
 
@@ -111,6 +117,7 @@
   } from 'vuex'
   import brandCard from '../../components/brandCard/brandCard.vue'
   import RecommendProduct from '../../components/RecommendProduct/RecommendProduct.vue'
+  import Login from '../../components/Login/Login.vue'
   export default {
     data() {
       return {
@@ -123,18 +130,15 @@
     },
     components: {
       brandCard,
-      RecommendProduct
+      RecommendProduct,
+      Login
     },
     computed: {
       ...mapState({
-        list: (state) => state.productDetail.list
+        list: (state) => state.productDetail.list,
+        showLoginModal: state => state.login.showLoginModal
       })
     },
-    onLoad(options) {
-      this.product_id = options.productId
-      this.fetchProductDetail(this.product_id)
-    },
-    mounted() {},
     methods: {
       async fetchProductDetail(product_id) {
         this.isLoading = true
@@ -175,13 +179,29 @@
             }
           }).exec()
         })
+      },
+      addToCart() {
+        if (!this.$store.state.login.userInfo) {
+          this.$store.dispatch('openLoginModal', 'detail');
+        }
+      },
+      purchase() {
+        if (!this.$store.state.login.userInfo) {
+          this.$store.dispatch('openLoginModal', 'detail');
+        }
       }
-
-    }
+    },
+    onLoad(options) {
+      this.product_id = options.productId
+      this.fetchProductDetail(this.product_id)
+      if (!this.$store.state.login.userInfo) {
+        this.$store.dispatch('closeLoginModal'); // 直接关闭登录弹窗('tab'/'detail')
+      }
+    },
   }
 </script>
 <style scoped lang="scss">
-  .container {
+  .container .real-content-container {
     background-color: #f5f5f5;
     display: flex;
     justify-content: center;

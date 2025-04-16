@@ -10023,7 +10023,7 @@ var b = "development" === "development",
   k = "true" === undefined || !0 === undefined,
   P = T([]),
   C = "h5" === E ? "web" : "app-plus" === E || "app-harmony" === E ? "app" : E,
-  A = T({"address":["127.0.0.1","26.26.26.1","192.168.138.187"],"servePort":7000,"debugPort":9000,"initialLaunchType":"local","skipFiles":["<node_internals>/**","E:/App/HBuilderX.4.45/HBuilderX/plugins/unicloud/**/*.js"]}),
+  A = T({"address":["127.0.0.1","26.26.26.1","192.168.41.187"],"servePort":7000,"debugPort":9000,"initialLaunchType":"local","skipFiles":["<node_internals>/**","E:/App/HBuilderX.4.45/HBuilderX/plugins/unicloud/**/*.js"]}),
   O = T([{"provider":"aliyun","spaceName":"fearless","spaceId":"mp-f20532cf-4241-4f79-bbf9-b5d91cb44c18","clientSecret":"c0t/xrquDr9ikaaYtpETYA==","endpoint":"https://api.next.bspapp.com"}]) || [],
   x = true;
 var N = "";
@@ -27965,6 +27965,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! ./home/index.js */ 1
 var _cleaning = _interopRequireDefault(__webpack_require__(/*! ./cleaning/cleaning.js */ 171));
 var _productDetail = _interopRequireDefault(__webpack_require__(/*! ./productDetail/productDetail.js */ 172));
 var _login = _interopRequireDefault(__webpack_require__(/*! ./login/login.js */ 173));
+var _navigation = _interopRequireDefault(__webpack_require__(/*! ./navigation/navigation.js */ 174));
 _vue.default.use(_vuex.default);
 
 // //准备state对象——保存具体的数据
@@ -27980,7 +27981,8 @@ var _default = new _vuex.default.Store({
     home: _index.default,
     cleaning: _cleaning.default,
     productDetail: _productDetail.default,
-    login: _login.default
+    login: _login.default,
+    navigation: _navigation.default
   },
   strict: "development" !== 'production' // 开发环境严格模式
 });
@@ -29413,18 +29415,126 @@ exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
-
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var state = {
+  validEmails: ["gmail.com", "qq.com", "outlook.com", "163.com", "sina.com"],
   showLoginModal: true,
-  validEmails: ["gmail.com", "qq.com", "outlook.com", "163.com", "sina.com"]
+  isLogin: false,
+  userInfo: null,
+  // token: uni.getStorageSync('token') || null, // 初始化时从本地存储中获取 token
+  loginTrigger: null // 记录触发登录的来源场景: 'tab' | 'detail'
 };
-var mutations = {};
-var actions = {};
+
+var mutations = {
+  TOGGLE_LOGIN_MODAL: function TOGGLE_LOGIN_MODAL(state, payload) {
+    state.showLoginModal = payload;
+  },
+  SET_USER_INFO: function SET_USER_INFO(state, payload) {
+    state.userInfo = payload;
+  },
+  SET_LOGIN_TRIGGER: function SET_LOGIN_TRIGGER(state, source) {
+    state.loginTrigger = source;
+  } // SET_TOKEN(state, token) {
+  //   state.token = token;
+  //   uni.setStorageSync('token', token); // 将 token 存储到本地
+  //   //本地存储token
+  //   // 后续请求携带Token
+  //   // uni.request({  //访问外部HTTP API
+  //   //   url: '...',
+  //   //   header: {
+  //   //     'Authorization': 'Bearer ' + uni.getStorageSync('token')
+  //   //   }
+  //   // });
+  // }
+};
+var actions = {
+  // 触发登录弹窗时记录来源
+  openLoginModal: function openLoginModal(_ref, source) {
+    var commit = _ref.commit;
+    commit('SET_LOGIN_TRIGGER', source);
+    // if()
+    commit('TOGGLE_LOGIN_MODAL', true);
+  },
+  // 关闭登录弹窗
+  closeLoginModal: function closeLoginModal(_ref2) {
+    var commit = _ref2.commit;
+    commit('TOGGLE_LOGIN_MODAL', false);
+  },
+  // 用户注册登录逻辑
+  submitLogin: function submitLogin(_ref3, payload) {
+    return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+      var commit, funcName, userInfo, userData;
+      return _regenerator.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref3.commit;
+              _context.prev = 1;
+              funcName = payload.isRegister ? 'userRegister' : 'userLogin';
+              _context.next = 5;
+              return uniCloud.callFunction({
+                name: funcName,
+                data: payload
+              });
+            case 5:
+              userInfo = _context.sent;
+              if (!(userInfo.result.code == '200')) {
+                _context.next = 14;
+                break;
+              }
+              // const token = res.result.data.token; // 确保云函数返回了token
+              userData = payload.isRegister ? payload.account : res.result.data.userInfo; // commit('SET_TOKEN', token);
+              commit('SET_USER_INFO', userData);
+              commit('TOGGLE_LOGIN_MODAL', false);
+              uni.showToast({
+                title: payload.isRegister ? '注册成功' : '登录成功',
+                icon: 'none'
+              });
+              return _context.abrupt("return", {
+                success: true,
+                token: token
+              });
+            case 14:
+              // 云函数返回的业务错误（如账号已存在/密码错误等）
+              // console.log("云函数返回的业务错误（如账号已存在/密码错误等）")
+              uni.showToast({
+                title: userInfo.result.message || '操作失败',
+                icon: 'none'
+              });
+              return _context.abrupt("return", {
+                success: false
+              });
+            case 16:
+              _context.next = 22;
+              break;
+            case 18:
+              _context.prev = 18;
+              _context.t0 = _context["catch"](1);
+              // 网络请求或系统级错误
+              uni.showToast({
+                title: payload.isRegister ? "注册失败" : '登录失败',
+                icon: 'none'
+              });
+              return _context.abrupt("return", {
+                success: false
+              });
+            case 22:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 18]]);
+    }))();
+  } // 验证 token 是否有效
+};
 var getters = {};
 var _default = {
   state: state,
@@ -29433,9 +29543,46 @@ var _default = {
   getters: getters
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 /* 174 */
+/*!*******************************************************************!*\
+  !*** E:/WechatProgram/Lonsdaleite/store/navigation/navigation.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var state = {
+  lastTabBarIndex: 0 // 记录上次停留的tabBar索引
+};
+
+var mutations = {
+  UPDATE_LAST_TAB: function UPDATE_LAST_TAB(state, index) {
+    state.lastTabBarIndex = index;
+    console.log("lastTabBarIndex", index);
+  }
+};
+var actions = {};
+var getters = {};
+var _default = {
+  namespaced: true,
+  state: state,
+  mutations: mutations,
+  actions: actions,
+  getters: getters
+};
+exports.default = _default;
+
+/***/ }),
+/* 175 */
 /*!**************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/utils/unit.js ***!
   \**************************************************/
@@ -29461,14 +29608,35 @@ function pxToRpx(px) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 175 */,
 /* 176 */,
 /* 177 */,
 /* 178 */,
 /* 179 */,
 /* 180 */,
 /* 181 */,
-/* 182 */,
+/* 182 */
+/*!*******************************************************!*\
+  !*** E:/WechatProgram/Lonsdaleite/mixins/tabMixin.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  onTabItemTap: function onTabItemTap(e) {
+    // console.log("e", e)
+    this.$store.commit('navigation/UPDATE_LAST_TAB', e.index);
+  }
+};
+exports.default = _default;
+
+/***/ }),
 /* 183 */,
 /* 184 */,
 /* 185 */,
@@ -29624,7 +29792,11 @@ function pxToRpx(px) {
 /* 335 */,
 /* 336 */,
 /* 337 */,
-/* 338 */
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */
 /*!*******************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/libs/mixin/button.js ***!
   \*******************************************************************************/
@@ -29654,7 +29826,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 339 */
+/* 343 */
 /*!*********************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/libs/mixin/openType.js ***!
   \*********************************************************************************/
@@ -29696,7 +29868,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 340 */
+/* 344 */
 /*!***************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-button/props.js ***!
   \***************************************************************************************/
@@ -29875,14 +30047,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
 /* 345 */,
 /* 346 */,
 /* 347 */,
-/* 348 */
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */
 /*!***************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-sticky/props.js ***!
   \***************************************************************************************/
@@ -29934,14 +30106,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
 /* 353 */,
 /* 354 */,
 /* 355 */,
-/* 356 */
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */
 /*!*******************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-subsection/props.js ***!
   \*******************************************************************************************/
@@ -30008,10 +30180,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
 /* 361 */,
 /* 362 */,
 /* 363 */,
@@ -30029,7 +30197,11 @@ exports.default = _default;
 /* 375 */,
 /* 376 */,
 /* 377 */,
-/* 378 */
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */
 /*!***************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-tabbar/props.js ***!
   \***************************************************************************************/
@@ -30091,10 +30263,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
 /* 383 */,
 /* 384 */,
 /* 385 */,
@@ -30105,7 +30273,11 @@ exports.default = _default;
 /* 390 */,
 /* 391 */,
 /* 392 */,
-/* 393 */
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */
 /*!*****************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-loadmore/props.js ***!
   \*****************************************************************************************/
@@ -30217,14 +30389,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
 /* 398 */,
 /* 399 */,
 /* 400 */,
-/* 401 */
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */
 /*!***************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-switch/props.js ***!
   \***************************************************************************************/
@@ -30296,14 +30468,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 402 */,
-/* 403 */,
-/* 404 */,
-/* 405 */,
 /* 406 */,
 /* 407 */,
 /* 408 */,
-/* 409 */
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */
 /*!*********************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-loading-icon/props.js ***!
   \*********************************************************************************************/
@@ -30380,14 +30552,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */,
 /* 414 */,
 /* 415 */,
 /* 416 */,
-/* 417 */
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */
 /*!*************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-icon/icons.js ***!
   \*************************************************************************************/
@@ -30618,7 +30790,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 418 */
+/* 422 */
 /*!*************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-icon/props.js ***!
   \*************************************************************************************/
@@ -30725,14 +30897,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 419 */,
-/* 420 */,
-/* 421 */,
-/* 422 */,
 /* 423 */,
 /* 424 */,
 /* 425 */,
-/* 426 */
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */
 /*!********************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-safe-bottom/props.js ***!
   \********************************************************************************************/
@@ -30752,14 +30924,14 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 427 */,
-/* 428 */,
-/* 429 */,
-/* 430 */,
 /* 431 */,
 /* 432 */,
 /* 433 */,
-/* 434 */
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */
 /*!*************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-line/props.js ***!
   \*************************************************************************************/

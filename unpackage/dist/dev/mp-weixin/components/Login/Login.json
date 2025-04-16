@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "center-popup": "/components/CenterPopup/CenterPopup",
     "u-switch": "/node-modules/uview-ui/components/u-switch/u-switch"
   },
   "component": true

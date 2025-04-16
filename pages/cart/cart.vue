@@ -5,15 +5,20 @@
 </template>
 
 <script>
+  import tabMixin from '../../mixins/tabMixin.js'
+  import {
+    mapState
+  } from 'vuex'
   export default {
+    mixins: [tabMixin],
     data() {
       return {
 
       }
     },
-    methods: {
-
-    },
+    computed: {},
+    methods: {},
+    mounted() {},
     components: {}
   }
 </script>

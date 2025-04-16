@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import tabMixin from '../../mixins/tabMixin.js'
   import HomeTabBar from '../../components/HomeTabBar/HomeTabBar'
   import CleaningContent from '@/pages/cleaning/cleaning.vue'
   import MakeupContent from '@/pages/makeup/makeup.vue'
@@ -34,6 +35,7 @@
     mapState
   } from 'vuex'
   export default {
+    mixins: [tabMixin],
     components: {
       HomeTabBar,
       CleaningContent,
@@ -54,9 +56,7 @@
         categoryTabs: state => state.home.categoryTabs,
       }),
       // 根据 activeCategory 选择对应的组件名称
-      onTabChange() {
-
-      }
+      onTabChange() {}
     },
     methods: {},
     mounted() {}
