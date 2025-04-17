@@ -104,15 +104,20 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var _default = {
   onLaunch: function onLaunch() {
     console.log('App Launch');
+    // 获取 token 并验证
+    this.checkAuth();
   },
   onShow: function onShow() {
     console.log('App Show');
@@ -124,10 +129,78 @@ var _default = {
     uni.navigateTo({
       url: '/pages/404/404'
     });
+  },
+  methods: {
+    checkAuth: function checkAuth() {
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var authData, res, newToken;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                // 获取存储的认证数据
+                authData = uni.getStorageSync('auth_data');
+                console.log("authData", authData);
+                // 基础检查
+                if (authData !== null && authData !== void 0 && authData.token) {
+                  _context.next = 5;
+                  break;
+                }
+                _this.gotoLogin();
+                return _context.abrupt("return");
+              case 5:
+                if (!(Date.now() > authData.expires)) {
+                  _context.next = 9;
+                  break;
+                }
+                uni.showToast({
+                  title: '登录已过期',
+                  icon: 'none'
+                });
+                _this.gotoLogin();
+                return _context.abrupt("return");
+              case 9:
+                _context.next = 11;
+                return uniCloud.callFunction({
+                  name: 'verifyToken',
+                  data: {
+                    token: authData.token
+                  }
+                });
+              case 11:
+                res = _context.sent;
+                console.log("验证token res", res);
+                // 处理验证结果
+                if (res.result.code === 200) {
+                  _this.$store.commit('SET_USER_INFO', res.result.userInfo);
+                  _this.$store.dispatch('closeLoginModal');
+                  newToken = res.result.newToken;
+                  console.log("newToken");
+                  if (newToken) {
+                    // 存储新的 token
+                    console.log("SET_NEW_TOKEN");
+                    _this.$store.commit('SET_NEW_TOKEN', newToken);
+                  }
+                } else {
+                  _this.gotoLogin();
+                }
+              case 14:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    gotoLogin: function gotoLogin() {
+      // 设置登录显示
+      this.$store.commit('TOGGLE_LOGIN_MODAL', true);
+    }
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"]))
 
 /***/ }),
 

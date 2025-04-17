@@ -40,15 +40,7 @@
         this.$store.dispatch('openLoginModal', 'tab'); // 直接显示登录弹窗('tab'/'detail')
       }
     },
-    onLaunch() {
-      // 获取 token 并验证
-      // this.$store.dispatch('verifyToken').then(isValid => {
-      //   if (!isValid) {
-      //     // 如果 token 无效，或者验证失败，显示登录弹窗
-      //     this.$store.dispatch('openLoginModal', 'tab');
-      //   }
-      // });
-    },
+
     methods: {
       // ...mapActions(["verifyToken"])
     }

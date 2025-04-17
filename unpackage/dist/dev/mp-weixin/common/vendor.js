@@ -10023,7 +10023,7 @@ var b = "development" === "development",
   k = "true" === undefined || !0 === undefined,
   P = T([]),
   C = "h5" === E ? "web" : "app-plus" === E || "app-harmony" === E ? "app" : E,
-  A = T({"address":["127.0.0.1","26.26.26.1","192.168.41.187"],"servePort":7000,"debugPort":9000,"initialLaunchType":"local","skipFiles":["<node_internals>/**","E:/App/HBuilderX.4.45/HBuilderX/plugins/unicloud/**/*.js"]}),
+  A = T({"address":["127.0.0.1","26.26.26.1","10.81.12.170"],"servePort":7000,"debugPort":9000,"initialLaunchType":"local","skipFiles":["<node_internals>/**","E:/App/HBuilderX.4.45/HBuilderX/plugins/unicloud/**/*.js"]}),
   O = T([{"provider":"aliyun","spaceName":"fearless","spaceId":"mp-f20532cf-4241-4f79-bbf9-b5d91cb44c18","clientSecret":"c0t/xrquDr9ikaaYtpETYA==","endpoint":"https://api.next.bspapp.com"}]) || [],
   x = true;
 var N = "";
@@ -29415,7 +29415,7 @@ exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
@@ -29429,54 +29429,80 @@ var state = {
   showLoginModal: true,
   isLogin: false,
   userInfo: null,
-  // token: uni.getStorageSync('token') || null, // 初始化时从本地存储中获取 token
-  loginTrigger: null // 记录触发登录的来源场景: 'tab' | 'detail'
+  //（user.account）
+  token: uni.getStorageSync('token') || null,
+  // 初始化时从本地存储中获取 token
+  loginTrigger: null,
+  // 记录触发登录的来源场景: 'tab' | 'detail'
+  userId: null
 };
-
 var mutations = {
   TOGGLE_LOGIN_MODAL: function TOGGLE_LOGIN_MODAL(state, payload) {
+    //显示/隐藏登录
     state.showLoginModal = payload;
   },
   SET_USER_INFO: function SET_USER_INFO(state, payload) {
+    //设置用户信息
     state.userInfo = payload;
   },
   SET_LOGIN_TRIGGER: function SET_LOGIN_TRIGGER(state, source) {
+    // 设置登录来源
     state.loginTrigger = source;
-  } // SET_TOKEN(state, token) {
-  //   state.token = token;
-  //   uni.setStorageSync('token', token); // 将 token 存储到本地
-  //   //本地存储token
-  //   // 后续请求携带Token
-  //   // uni.request({  //访问外部HTTP API
-  //   //   url: '...',
-  //   //   header: {
-  //   //     'Authorization': 'Bearer ' + uni.getStorageSync('token')
-  //   //   }
-  //   // });
-  // }
+  },
+  SET_TOKEN: function SET_TOKEN(state, _ref) {
+    var token = _ref.token,
+      uid = _ref.uid,
+      expires = _ref.expires;
+    uni.setStorageSync('token', token); // 将 token 存储到本地
+    state.token = token;
+    state.userId = uid;
+
+    // 结构化存储
+    uni.setStorageSync('auth_data', {
+      token: token,
+      uid: uid,
+      expires: expires || Date.now() + 7 * 24 * 60 * 60 * 1000 // 默认7天过期
+    });
+    //本地存储token
+    // 后续请求携带Token
+    // uni.request({  //访问外部HTTP API
+    //   url: '...',
+    //   header: {
+    //     'Authorization': 'Bearer ' + uni.getStorageSync('token')
+    //   }
+    // });
+  },
+  SET_NEW_TOKEN: function SET_NEW_TOKEN(state, newToken) {
+    state.token = newToken;
+    uni.setStorageSync('auth_data', {
+      token: token,
+      uid: state.userInfo,
+      expires: expires || Date.now() + 7 * 24 * 60 * 60 * 1000 // 默认7天过期
+    });
+  }
 };
+
 var actions = {
   // 触发登录弹窗时记录来源
-  openLoginModal: function openLoginModal(_ref, source) {
-    var commit = _ref.commit;
+  openLoginModal: function openLoginModal(_ref2, source) {
+    var commit = _ref2.commit;
     commit('SET_LOGIN_TRIGGER', source);
-    // if()
     commit('TOGGLE_LOGIN_MODAL', true);
   },
   // 关闭登录弹窗
-  closeLoginModal: function closeLoginModal(_ref2) {
-    var commit = _ref2.commit;
+  closeLoginModal: function closeLoginModal(_ref3) {
+    var commit = _ref3.commit;
     commit('TOGGLE_LOGIN_MODAL', false);
   },
   // 用户注册登录逻辑
-  submitLogin: function submitLogin(_ref3, payload) {
+  submitLogin: function submitLogin(_ref4, payload) {
     return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-      var commit, funcName, userInfo, userData;
+      var commit, funcName, userInfo, _token, userData;
       return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              commit = _ref3.commit;
+              commit = _ref4.commit;
               _context.prev = 1;
               funcName = payload.isRegister ? 'userRegister' : 'userLogin';
               _context.next = 5;
@@ -29487,11 +29513,17 @@ var actions = {
             case 5:
               userInfo = _context.sent;
               if (!(userInfo.result.code == '200')) {
-                _context.next = 14;
+                _context.next = 17;
                 break;
               }
-              // const token = res.result.data.token; // 确保云函数返回了token
-              userData = payload.isRegister ? payload.account : res.result.data.userInfo; // commit('SET_TOKEN', token);
+              _token = userInfo.result.data.token; // 确保云函数返回了token
+              userData = payload.isRegister ? payload.account : userInfo.result.data.userInfo;
+              console.log("SET_TOKEN-actions", userInfo.result.data);
+              commit('SET_TOKEN', {
+                token: userInfo.result.data.token,
+                uid: userInfo.result.data.userInfo,
+                expires: userInfo.result.data.expiresIn
+              });
               commit('SET_USER_INFO', userData);
               commit('TOGGLE_LOGIN_MODAL', false);
               uni.showToast({
@@ -29500,9 +29532,9 @@ var actions = {
               });
               return _context.abrupt("return", {
                 success: true,
-                token: token
+                token: _token
               });
-            case 14:
+            case 17:
               // 云函数返回的业务错误（如账号已存在/密码错误等）
               // console.log("云函数返回的业务错误（如账号已存在/密码错误等）")
               uni.showToast({
@@ -29512,13 +29544,14 @@ var actions = {
               return _context.abrupt("return", {
                 success: false
               });
-            case 16:
-              _context.next = 22;
+            case 19:
+              _context.next = 26;
               break;
-            case 18:
-              _context.prev = 18;
+            case 21:
+              _context.prev = 21;
               _context.t0 = _context["catch"](1);
               // 网络请求或系统级错误
+              console.log('登录失败', _context.t0);
               uni.showToast({
                 title: payload.isRegister ? "注册失败" : '登录失败',
                 icon: 'none'
@@ -29526,14 +29559,14 @@ var actions = {
               return _context.abrupt("return", {
                 success: false
               });
-            case 22:
+            case 26:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 18]]);
+      }, _callee, null, [[1, 21]]);
     }))();
-  } // 验证 token 是否有效
+  }
 };
 var getters = {};
 var _default = {
@@ -29543,7 +29576,7 @@ var _default = {
   getters: getters
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["uniCloud"]))
 
 /***/ }),
 /* 174 */
@@ -30396,7 +30429,14 @@ exports.default = _default;
 /* 402 */,
 /* 403 */,
 /* 404 */,
-/* 405 */
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */
 /*!***************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-switch/props.js ***!
   \***************************************************************************************/
@@ -30468,14 +30508,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */
 /*!*********************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-loading-icon/props.js ***!
   \*********************************************************************************************/
@@ -30552,14 +30592,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */,
-/* 420 */,
-/* 421 */
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */
 /*!*************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-icon/icons.js ***!
   \*************************************************************************************/
@@ -30790,7 +30830,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 422 */
+/* 429 */
 /*!*************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-icon/props.js ***!
   \*************************************************************************************/
@@ -30897,14 +30937,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 423 */,
-/* 424 */,
-/* 425 */,
-/* 426 */,
-/* 427 */,
-/* 428 */,
-/* 429 */,
-/* 430 */
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */
 /*!********************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-safe-bottom/props.js ***!
   \********************************************************************************************/
@@ -30924,14 +30964,14 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 431 */,
-/* 432 */,
-/* 433 */,
-/* 434 */,
-/* 435 */,
-/* 436 */,
-/* 437 */,
-/* 438 */
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */
 /*!*************************************************************************************!*\
   !*** E:/WechatProgram/Lonsdaleite/node_modules/uview-ui/components/u-line/props.js ***!
   \*************************************************************************************/

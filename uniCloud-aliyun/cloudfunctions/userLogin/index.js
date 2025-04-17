@@ -35,15 +35,19 @@ exports.main = async (event, context) => {
       message: '密码错误'
     }
   }
-  // 生成Token
-  const token = generateToken(user._id);
+  // 生成 token 并获取过期时间
+  const {
+    token,
+    expiresIn
+  } = generateToken(user.account);
 
   delete user.password;
   return {
     code: 200,
     data: {
       token,
-      userInfo: user
+      expiresIn,
+      userInfo: user.account
     }
   }
 

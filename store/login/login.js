@@ -2,32 +2,56 @@ const state = {
   validEmails: ["gmail.com", "qq.com", "outlook.com", "163.com", "sina.com"],
   showLoginModal: true,
   isLogin: false,
-  userInfo: null,
-  // token: uni.getStorageSync('token') || null, // 初始化时从本地存储中获取 token
-  loginTrigger: null // 记录触发登录的来源场景: 'tab' | 'detail'
+  userInfo: null, //（user.account）
+  token: uni.getStorageSync('token') || null, // 初始化时从本地存储中获取 token
+  loginTrigger: null, // 记录触发登录的来源场景: 'tab' | 'detail'
+  userId: null
 }
 const mutations = {
   TOGGLE_LOGIN_MODAL(state, payload) {
+    //显示/隐藏登录
     state.showLoginModal = payload;
   },
   SET_USER_INFO(state, payload) {
+    //设置用户信息
     state.userInfo = payload
   },
   SET_LOGIN_TRIGGER(state, source) {
+    // 设置登录来源
     state.loginTrigger = source;
   },
-  // SET_TOKEN(state, token) {
-  //   state.token = token;
-  //   uni.setStorageSync('token', token); // 将 token 存储到本地
-  //   //本地存储token
-  //   // 后续请求携带Token
-  //   // uni.request({  //访问外部HTTP API
-  //   //   url: '...',
-  //   //   header: {
-  //   //     'Authorization': 'Bearer ' + uni.getStorageSync('token')
-  //   //   }
-  //   // });
-  // }
+  SET_TOKEN(state, {
+    token,
+    uid,
+    expires
+  }) {
+    uni.setStorageSync('token', token); // 将 token 存储到本地
+    state.token = token;
+    state.userId = uid;
+
+    // 结构化存储
+    uni.setStorageSync('auth_data', {
+      token,
+      uid,
+      expires: expires || Date.now() + 7 * 24 * 60 * 60 * 1000 // 默认7天过期
+    });
+    //本地存储token
+    // 后续请求携带Token
+    // uni.request({  //访问外部HTTP API
+    //   url: '...',
+    //   header: {
+    //     'Authorization': 'Bearer ' + uni.getStorageSync('token')
+    //   }
+    // });
+  },
+  SET_NEW_TOKEN(state, newToken) {
+    state.token = newToken;
+    uni.setStorageSync('auth_data', {
+      token,
+      uid: state.userInfo,
+      expires: expires || Date.now() + 7 * 24 * 60 * 60 * 1000 // 默认7天过期
+    });
+  }
 }
 const actions = {
   // 触发登录弹窗时记录来源
@@ -35,7 +59,6 @@ const actions = {
     commit
   }, source) {
     commit('SET_LOGIN_TRIGGER', source);
-    // if()
     commit('TOGGLE_LOGIN_MODAL', true);
   },
   // 关闭登录弹窗
@@ -56,10 +79,15 @@ const actions = {
       })
       // console.log("userInfo", userInfo)
       if (userInfo.result.code == '200') {
-        // const token = res.result.data.token; // 确保云函数返回了token
-        const userData = payload.isRegister ? payload.account : res.result.data.userInfo;
+        const token = userInfo.result.data.token; // 确保云函数返回了token
+        const userData = payload.isRegister ? payload.account : userInfo.result.data.userInfo;
+        console.log("SET_TOKEN-actions", userInfo.result.data)
+        commit('SET_TOKEN', {
+          token: userInfo.result.data.token,
+          uid: userInfo.result.data.userInfo,
+          expires: userInfo.result.data.expiresIn
+        })
 
-        // commit('SET_TOKEN', token);
         commit('SET_USER_INFO', userData)
         commit('TOGGLE_LOGIN_MODAL', false)
 
@@ -83,8 +111,9 @@ const actions = {
           success: false
         }
       }
-    } catch {
+    } catch (error) {
       // 网络请求或系统级错误
+      console.log('登录失败', error)
       uni.showToast({
         title: payload.isRegister ? "注册失败" : '登录失败',
         icon: 'none'
@@ -94,10 +123,7 @@ const actions = {
       }
     }
 
-  },
-
-  // 验证 token 是否有效
-
+  }
 }
 
 

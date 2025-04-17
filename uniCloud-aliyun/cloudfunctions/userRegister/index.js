@@ -43,16 +43,21 @@ exports.main = async (event, context) => {
     createdAt: Date.now(),
     updatedAT: Date.now()
   })
-  // 为新用户生成 token
-  const token = generateToken({
-    account
-  });
+  // 生成 token 并获取过期时间
+  const {
+    token,
+    expiresIn
+  } = generateToken(account);
 
+  delete user.password;
   return {
     code: 200,
     message: '注册成功',
     data: {
-      token
+      token,
+      expiresIn,
+      userInfo: account
     }
-  };
+  }
+
 };
