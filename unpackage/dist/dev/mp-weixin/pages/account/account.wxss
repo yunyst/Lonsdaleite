@@ -1,5 +1,157 @@
-
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
 .container.data-v-fe10413c {
-  /* height: ; */
+  background-color: #f8f8f8;
+}
+.header-card.data-v-fe10413c {
+  width: 100%;
+  height: 400rpx;
+  background-repeat: repeat;
+  background-size: auto;
+  background-image: url("https://lonsdaleite.oss-cn-beijing.aliyuncs.com/home/background/makeupBackground.webp");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.header-card .partup.data-v-fe10413c {
+  width: 100%;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-card .partup .avatar.data-v-fe10413c {
+  width: 180rpx;
+  height: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-card .partup .title.data-v-fe10413c {
+  width: 360rpx;
+  height: 180rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 26rpx;
+}
+.header-card .partup .title .nick-name.data-v-fe10413c {
+  height: 60rpx;
+  padding: 5rpx 20rpx;
+}
+.header-card .partup .title .detail-vip.data-v-fe10413c {
+  font-size: 20rpx;
+  padding-left: 20rpx;
+}
+.header-card .partup .tools.data-v-fe10413c {
+  flex: 1;
+  height: 140rpx;
+  padding: 10rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20rpx;
+  padding: 0rpx 20rpx;
+}
+.header-card .partup .tools .cue.data-v-fe10413c {
+  margin-top: 8rpx;
+  font-size: 20rpx;
+}
+.header-card .partdown-noticed.data-v-fe10413c {
+  width: 100%;
+  height: 160rpx;
+  align-self: end;
+  display: flex;
+  justify-content: space-around;
+}
+.header-card .partdown-noticed .part.data-v-fe10413c {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100rpx;
+}
+.header-card .partdown-noticed .part .count.data-v-fe10413c {
+  font-size: 45rpx;
+  color: #303030;
+}
+.header-card .partdown-noticed .part .title.data-v-fe10413c {
+  margin-top: 8rpx;
+  font-size: 20rpx;
+}
+.header-card .notice-bar.data-v-fe10413c {
+  position: absolute;
+  bottom: 10rpx;
+  width: 640rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+.card-container.data-v-fe10413c {
+  width: 100%;
+  height: auto;
+  margin: 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20rpx;
+}
+.card-container .my-order.data-v-fe10413c {
+  width: 640rpx;
+  height: auto;
+  border-radius: 30rpx;
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
+.card-container .my-order .header.data-v-fe10413c {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+.card-container .my-order .header .title.data-v-fe10413c {
+  font-size: 28rpx;
+  font-weight: 700;
+}
+.card-container .my-order .content.data-v-fe10413c {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  font-size: 24rpx;
+}
+.card-container .my-order .content .part.data-v-fe10413c {
+  width: 130rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8rpx;
 }
 

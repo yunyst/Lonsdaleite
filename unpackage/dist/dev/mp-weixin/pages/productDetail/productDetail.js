@@ -105,22 +105,22 @@ try {
       return __webpack_require__.e(/*! import() | components/Login/Login */ "components/Login/Login").then(__webpack_require__.bind(null, /*! @/components/Login/Login.vue */ 330))
     },
     uSticky: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-sticky/u-sticky */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-sticky/u-sticky")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-sticky/u-sticky.vue */ 347))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-sticky/u-sticky */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-sticky/u-sticky")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-sticky/u-sticky.vue */ 337))
     },
     uSubsection: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-subsection/u-subsection */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-subsection/u-subsection")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-subsection/u-subsection.vue */ 355))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-subsection/u-subsection */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-subsection/u-subsection")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-subsection/u-subsection.vue */ 345))
     },
     brandCard: function () {
-      return __webpack_require__.e(/*! import() | components/brandCard/brandCard */ "components/brandCard/brandCard").then(__webpack_require__.bind(null, /*! @/components/brandCard/brandCard.vue */ 363))
+      return __webpack_require__.e(/*! import() | components/brandCard/brandCard */ "components/brandCard/brandCard").then(__webpack_require__.bind(null, /*! @/components/brandCard/brandCard.vue */ 353))
     },
     RecommendProduct: function () {
-      return __webpack_require__.e(/*! import() | components/RecommendProduct/RecommendProduct */ "components/RecommendProduct/RecommendProduct").then(__webpack_require__.bind(null, /*! @/components/RecommendProduct/RecommendProduct.vue */ 370))
+      return __webpack_require__.e(/*! import() | components/RecommendProduct/RecommendProduct */ "components/RecommendProduct/RecommendProduct").then(__webpack_require__.bind(null, /*! @/components/RecommendProduct/RecommendProduct.vue */ 360))
     },
     uTabbar: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-tabbar/u-tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-tabbar/u-tabbar")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-tabbar/u-tabbar.vue */ 377))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-tabbar/u-tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-tabbar/u-tabbar")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-tabbar/u-tabbar.vue */ 367))
     },
     uButton: function () {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-button/u-button.vue */ 337))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-button/u-button.vue */ 375))
     },
   }
 } catch (e) {
@@ -207,12 +207,12 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var brandCard = function brandCard() {
   __webpack_require__.e(/*! require.ensure | components/brandCard/brandCard */ "components/brandCard/brandCard").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/brandCard/brandCard.vue */ 363));
+    return resolve(__webpack_require__(/*! ../../components/brandCard/brandCard.vue */ 353));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var RecommendProduct = function RecommendProduct() {
   __webpack_require__.e(/*! require.ensure | components/RecommendProduct/RecommendProduct */ "components/RecommendProduct/RecommendProduct").then((function () {
-    return resolve(__webpack_require__(/*! ../../components/RecommendProduct/RecommendProduct.vue */ 370));
+    return resolve(__webpack_require__(/*! ../../components/RecommendProduct/RecommendProduct.vue */ 360));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var Login = function Login() {

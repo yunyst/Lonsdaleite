@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <u-button type="primary"><text>vaild</text></u-button>
+    cart
   </view>
 </template>
 

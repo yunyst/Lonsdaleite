@@ -99,18 +99,21 @@
       },
       //获取板块商品数据
       async fetchSections() {
+        this.isLoading = true;
         try {
           const res = await uniCloud.callFunction({
             name: 'getCleaningSectionProducts'
           });
           // console.log(res)
           this.sections = res.result
+          this.isLoading = false;
         } catch (err) {
           console.error('加载sections data失败:', err);
           uni.showToast({
             title: '加载失败',
             icon: 'none'
           });
+          this.isLoading = false;
         }
       },
       //return top

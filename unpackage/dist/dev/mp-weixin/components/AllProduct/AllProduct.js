@@ -186,7 +186,7 @@ var _default = {
       loadText: {
         loadmore: '轻轻上拉哦~~~~~~~~',
         loading: '努力加载中~~~~~~~',
-        nomore: '实在是没有了呜呜呜呜呜呜~~~~'
+        nomore: '实在是没有了~~~~'
       }
     };
   },

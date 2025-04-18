@@ -59,7 +59,11 @@
       onTabChange() {}
     },
     methods: {},
-    mounted() {}
+    mounted() {},
+    onHide() {
+      // 恢复默认分类
+      this.$store.dispatch('updateCategory', 'cleaning');
+    }
   }
 </script>
 

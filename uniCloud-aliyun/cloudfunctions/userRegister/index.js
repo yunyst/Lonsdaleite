@@ -49,7 +49,6 @@ exports.main = async (event, context) => {
     expiresIn
   } = generateToken(account);
 
-  delete user.password;
   return {
     code: 200,
     message: '注册成功',

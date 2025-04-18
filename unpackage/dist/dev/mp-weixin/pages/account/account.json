@@ -2,6 +2,10 @@
   "navigationBarTitleText": "个人中心",
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "login": "/components/Login/Login"
+    "login": "/components/Login/Login",
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-notice-bar": "/node-modules/uview-ui/components/u-notice-bar/u-notice-bar",
+    "all-product": "/components/AllProduct/AllProduct"
   }
 }

@@ -251,31 +251,34 @@ var _default = {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
+                _this2.isLoading = true;
+                _context2.prev = 1;
+                _context2.next = 4;
                 return uniCloud.callFunction({
                   name: 'getCleaningSectionProducts'
                 });
-              case 3:
+              case 4:
                 res = _context2.sent;
                 // console.log(res)
                 _this2.sections = res.result;
-                _context2.next = 11;
+                _this2.isLoading = false;
+                _context2.next = 14;
                 break;
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](1);
                 console.error('加载sections data失败:', _context2.t0);
                 uni.showToast({
                   title: '加载失败',
                   icon: 'none'
                 });
-              case 11:
+                _this2.isLoading = false;
+              case 14:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[1, 9]]);
       }))();
     },
     //return top
