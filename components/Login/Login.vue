@@ -114,6 +114,12 @@
     components: {
       CenterPopup
     },
+    onShow() {
+
+    },
+    onHide() {
+
+    },
     methods: {
       ...mapActions(['submitLogin', 'closeLoginModal']),
 
@@ -230,9 +236,15 @@
             url: this.$store.state.navigation.lastTabBarIndex === 0 ?
               '/pages/home/home' : '/pages/cart/cart'
           });
+          // 延迟清理数据，确保跳转完成后执行
+          setTimeout(() => {
+            this.clearAll();
+          }, 500); // 延时 500 毫秒
         } else {
           this.closeLoginModal()
+          this.clearAll()
         }
+
       },
       contactUs() {
         console.log("contactus")
@@ -262,6 +274,14 @@
         }
         this.submitLogin(payload)
       },
+      clearAll() {
+        //清除已输入数据
+        this.inputValue = ''
+        this.password = ''
+        this.isAgree = false
+        this.errorMessage = ''
+        this.passwordError = ''
+      }
     }
   }
 </script>

@@ -45,71 +45,26 @@
 
 
 /* 遮罩层动画 */
-.fade-enter-active.data-v-8415b918,
-.fade-leave-active.data-v-8415b918 {
-  transition: opacity 0.5s;
+/* .fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
 }
-.fade-enter.data-v-8415b918,
-.fade-leave-to.data-v-8415b918 {
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
-/* 弹窗动画 */
-.zoom-enter-active.data-v-8415b918 {
-  -webkit-animation: zoomIn-data-v-8415b918 0.5s;
-          animation: zoomIn-data-v-8415b918 0.5s;
+
+.zoom-enter-active,
+.zoom-leave-active {
+  transition: all 3s ease;
 }
-.zoom-leave-active.data-v-8415b918 {
-  -webkit-animation: zoomOut-data-v-8415b918 0.5s;
-          animation: zoomOut-data-v-8415b918 0.5s;
-}
-@-webkit-keyframes zoomIn-data-v-8415b918 {
-from {
-    opacity: 0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-}
-to {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
-}
-@keyframes zoomIn-data-v-8415b918 {
-from {
-    opacity: 0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-}
-to {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
-}
-@-webkit-keyframes zoomOut-data-v-8415b918 {
-from {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
-to {
-    opacity: 0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-}
-}
-@keyframes zoomOut-data-v-8415b918 {
-from {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
-to {
-    opacity: 0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-}
-}
+
+.zoom-enter,
+.zoom-leave-to {
+  opacity: 0;
+  transform: scale(0.5);
+} */
 .popup-mask.data-v-8415b918 {
   position: fixed;
   top: 0;

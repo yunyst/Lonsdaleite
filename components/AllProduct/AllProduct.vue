@@ -8,17 +8,23 @@
           <AllGoodsCard :good="good" @goProductDetail="goProductDetail"></AllGoodsCard>
         </view>
       </view> -->
-      <!-- 使用瀑布流布局 -->
-      <view class="goods-grid">
-        <view class="goods-column" v-for="(column, cIndex) in columns" :key="cIndex">
-          <view class="goods-card" v-for="(good, gIndex) in column" :key="good.id">
-            <AllGoodsCard :good="good" @goProductDetail="goProductDetail"></AllGoodsCard>
+
+      <!-- 瀑布流容器 -->
+      <scroll-view scroll-y class="goods-scroll" @scrolltolower="handleScrollToLower" :scroll-with-animation="true">
+        <view class="goods-grid">
+          <view class="goods-column" v-for="(column, cIndex) in columns" :key="cIndex">
+            <view class="goods-card" v-for="good in column" :key="good.id">
+              <AllGoodsCard :good="good" @goProductDetail="goProductDetail" />
+            </view>
           </view>
         </view>
-      </view>
-      <!-- 加载更多 -->
-      <u-loadmore :status="loadMoreStatus" :icon-type="'circle'" :load-text="loadText"
-        @loadmore="loadMoreGoods"></u-loadmore>
+
+        <!-- 底部加载状态提示 -->
+        <view class="loading-footer" style="font-size: 20rpx; display: flex; justify-content: center;">
+          <text v-if="loading">加载中...</text>
+          <text v-else-if="!hasMore">没有更多了</text>
+        </view>
+      </scroll-view>
     </view>
   </view>
 </template>
@@ -51,13 +57,7 @@
         limit: 20,
         loading: false, //goods loading
         hasMore: true,
-        loadMoreStatus: "loadmore", //控制u-load-more组件
-        //加载前值为loadmore，加载中为loading，没有数据为nomore
-        loadText: {
-          loadmore: '轻轻上拉哦~~~~~~~~',
-          loading: '努力加载中~~~~~~~',
-          nomore: '实在是没有了~~~~'
-        },
+        scrollTimer: null
       };
     },
     watch: {
@@ -66,6 +66,10 @@
           this.distributeGoods(newGoods);
         },
         immediate: true
+      },
+      activeCategory() {
+        this.resetList();
+        this.loadMoreGoods();
       }
     },
     methods: {
@@ -76,7 +80,16 @@
           url: `/pages/productDetail/productDetail?productId=${product.product_id}`
         })
       },
-
+      // 重置列表数据
+      resetList() {
+        this.allGoods = [];
+        this.columns = [
+          [],
+          []
+        ];
+        this.skip = 0;
+        this.hasMore = true;
+      },
       //实现瀑布流
       distributeGoods(goods) {
         this.columns = [
@@ -86,12 +99,21 @@
         goods.forEach((item, index) => {
           this.columns[index % 2].push(item); // 交替分配到两列
         })
+      }, // 滚动到底部触发
+      handleScrollToLower() {
+        if (this.loading || !this.hasMore) return;
+
+        // 防抖处理
+        clearTimeout(this.scrollTimer);
+        this.scrollTimer = setTimeout(() => {
+          this.loadMoreGoods();
+        }, 300);
       },
       //获取商品卡片详情 调用云函数请求全部商品信息
       async loadMoreGoods() {
         if (this.loading || !this.hasMore) return;
         this.loading = true;
-        this.loadMoreStatus = "loading";
+        // this.loadMoreStatus = "loading";
 
         try {
           const res = await uniCloud.callFunction({
@@ -103,14 +125,11 @@
             }
           });
 
-          const products = res.result.data || [];
-          this.allGoods = this.allGoods.concat(products);
-          this.skip += products.length;
+          const newProducts = res.result.data || [];
+          this.allGoods = [...this.allGoods, ...newProducts];
+          this.skip += newProducts.length;
+          this.hasMore = newProducts.length >= this.limit;
 
-          if (products.length < this.limit) {
-            this.hasMore = false;
-            this.loadMoreStatus = "nomore";
-          }
         } catch (err) {
           console.error('加载更多失败:', err);
           uni.showToast({
@@ -119,9 +138,6 @@
           });
         } finally {
           this.loading = false;
-          if (this.loadMoreStatus !== "nomore") {
-            this.loadMoreStatus = "loadmore"
-          }
         }
       }
 
@@ -161,6 +177,11 @@
   } */
   .product-grid {
     padding: 20rpx;
+  }
+
+  .goods-scroll {
+    height: calc(100vh - 120rpx);
+    /* 根据实际布局调整 */
   }
 
   .goods-grid {

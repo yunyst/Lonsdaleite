@@ -137,6 +137,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 全部商品 */
 .all-goods-wrap.data-v-3e8fe9f8 {
   background-color: #fff;
@@ -159,6 +175,10 @@
 } */
 .product-grid.data-v-3e8fe9f8 {
   padding: 20rpx;
+}
+.goods-scroll.data-v-3e8fe9f8 {
+  height: calc(100vh - 120rpx);
+  /* 根据实际布局调整 */
 }
 .goods-grid.data-v-3e8fe9f8 {
   display: flex;

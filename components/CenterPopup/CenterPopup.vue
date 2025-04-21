@@ -45,9 +45,9 @@
 
 <style scoped>
   /* 遮罩层动画 */
-  .fade-enter-active,
+  /* .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 0.5s;
+    transition: opacity 0.4s ease;
   }
 
   .fade-enter,
@@ -55,38 +55,16 @@
     opacity: 0;
   }
 
-  /* 弹窗动画 */
-  .zoom-enter-active {
-    animation: zoomIn 0.5s;
-  }
-
+  .zoom-enter-active,
   .zoom-leave-active {
-    animation: zoomOut 0.5s;
+    transition: all 3s ease;
   }
 
-  @keyframes zoomIn {
-    from {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes zoomOut {
-    from {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    to {
-      opacity: 0;
-      transform: scale(0.5);
-    }
-  }
+  .zoom-enter,
+  .zoom-leave-to {
+    opacity: 0;
+    transform: scale(0.5);
+  } */
 
   .popup-mask {
     position: fixed;

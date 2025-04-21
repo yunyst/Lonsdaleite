@@ -28,4 +28,11 @@ sequenceDiagram
   end
 
 
-跳转到商品详情页报错WAServiceMainContext.js:1 [wxapplib]] Uncaught (in promise) FrameworkError {"errno":101,"errMsg":"private_getBackgroundFetchData:fail private_getBackgroundFetchData:fail:jsapi invalid request data"}
+跳转到商品详情页报错WAServiceMainContext.js:1 [wxapplib]] Uncaught (in promise) FrameworkError
+{"errno":101,"errMsg":"private_getBackgroundFetchData:fail private_getBackgroundFetchData:fail:jsapi invalid request data"}
+
+bug
+  1.商品详情页滑动自动切换分段器
+  2.个人中心的商品推荐
+  3.未登录状态下切换出去清除输入内容
+  4.centerpopup动画
