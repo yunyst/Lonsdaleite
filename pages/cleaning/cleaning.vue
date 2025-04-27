@@ -13,7 +13,6 @@
         <text class="icon-title">{{ icon.title }}</text>
       </view>
     </view>
-
     <!-- 五大板块 -->
     <view class="section-wrap" v-for="(section, sIndex) in sections" :key="sIndex">
       <!-- 板块标题 -->
@@ -59,7 +58,7 @@
         bannerList: [],
         sections: [],
         //return top
-        scrollTop: 0
+        scrollTop: 0,
       }
     },
 
@@ -77,21 +76,21 @@
         this.isLoading = true;
         this.error = null;
         try {
-          // 调用云函数
-          const result = await uniCloud.callFunction({
-            name: 'getBanners', // 你的云函数名称
-            data: {
-              pageType: pageType // 传递参数
-            }
+          // 使用插件中的 $smartCloud 方法调用云函数
+          const result = await this.$smartCloud('getBanners', {
+            pageType
+          }, {
+            loadingText: "数据加载中...",
+            cacheExpire: 600, //s
+            retryTimes: 2, // 失败后最多重试2次
+            retryDelay: 500 // 每次重试间隔500ms
           });
-          if (result.result.code === 200) {
-            this.bannerList = result.result.data || [];
-            console.log(this.bannerList)
-          } else {
-            this.error = result.result.message || '获取数据失败';
-          }
+
+          // 如果云函数返回数据正常
+          this.bannerList = result || []; // 这里不需要再检查 result.result.code
+
         } catch (err) {
-          console.error('调用云函数失败:', err);
+          // 捕获到的错误会通过插件统一处理
           this.error = '网络请求失败，请稍后重试';
         } finally {
           this.isLoading = false;
@@ -121,16 +120,16 @@
         this.scrollTop = e.scrollTop;
       }
     },
-    mounted() {
+    mounted() {},
+    created() {
+      this.$store.dispatch('updateCategory', this.pageType)
       this.fetchBanners(this.pageType).then(() => {
         console.log(`${this.pageType} banners successful`)
       })
       this.fetchSections().then(() => {
-        console.log("sections 数据加载完成", this.sections)
+        // console.log("sections 数据加载完成", this.sections)
       })
-    },
-    created() {
-      this.$store.dispatch('updateCategory', this.pageType)
+      // throw new Error('mounted 抛错测试');
     }
   }
 </script>

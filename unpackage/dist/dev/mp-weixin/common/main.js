@@ -11,6 +11,7 @@
 /* WEBPACK VAR INJECTION */(function(wx, uni, createApp) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 13);
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 __webpack_require__(/*! uni-pages */ 26);
 __webpack_require__(/*! @dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27);
@@ -19,7 +20,11 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
 __webpack_require__(/*! ./uni.promisify.adaptor */ 45);
 var _uviewUi = _interopRequireDefault(__webpack_require__(/*! uview-ui */ 46));
 var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 168));
-var _unit = __webpack_require__(/*! ./utils/unit.js */ 176);
+var _unit = __webpack_require__(/*! ./utils/unit.js */ 177);
+var _cloudPlugin = _interopRequireDefault(__webpack_require__(/*! @/plugins/cloud-plugin */ 178));
+var cloudFilters = _interopRequireWildcard(__webpack_require__(/*! ./filters/cloud-filters.js */ 179));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 // @ts-ignore
@@ -30,7 +35,15 @@ uni.$u.config.unit = 'rpx';
 // 将函数挂载到全局
 _vue.default.prototype.$rpxToPx = _unit.rpxToPx;
 _vue.default.prototype.$pxToRpx = _unit.pxToRpx;
+_vue.default.use(_cloudPlugin.default);
+Object.keys(cloudFilters).forEach(function (key) {
+  _vue.default.filter(key, cloudFilters[key]);
+});
 _vue.default.config.productionTip = false;
+_vue.default.config.errorHandler = function (err, vm, info) {
+  console.log("进入了Vue.config.errorHandler");
+  console.log(err);
+};
 _App.default.mpType = 'app';
 var app = new _vue.default(_objectSpread({
   store: _store.default
@@ -140,18 +153,17 @@ var _default = {
             switch (_context.prev = _context.next) {
               case 0:
                 // 获取存储的认证数据
-                authData = uni.getStorageSync('auth_data');
-                console.log("authData", authData);
+                authData = uni.getStorageSync('auth_data'); // console.log("authData", authData)
                 // 基础检查
                 if (authData !== null && authData !== void 0 && authData.token) {
-                  _context.next = 5;
+                  _context.next = 4;
                   break;
                 }
                 _this.gotoLogin();
                 return _context.abrupt("return");
-              case 5:
+              case 4:
                 if (!(Date.now() > authData.expires)) {
-                  _context.next = 9;
+                  _context.next = 8;
                   break;
                 }
                 uni.showToast({
@@ -160,15 +172,15 @@ var _default = {
                 });
                 _this.gotoLogin();
                 return _context.abrupt("return");
-              case 9:
-                _context.next = 11;
+              case 8:
+                _context.next = 10;
                 return uniCloud.callFunction({
                   name: 'verifyToken',
                   data: {
                     token: authData.token
                   }
                 });
-              case 11:
+              case 10:
                 res = _context.sent;
                 console.log("验证token res", res);
                 // 处理验证结果
@@ -185,7 +197,7 @@ var _default = {
                 } else {
                   _this.gotoLogin();
                 }
-              case 14:
+              case 13:
               case "end":
                 return _context.stop();
             }

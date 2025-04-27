@@ -9,8 +9,10 @@
     <transition name="zoom">
       <view v-if="show" class="popup-container">
         <view class="popup-content">
-          {{ content }}
+          <slot></slot>
         </view>
+
+
         <view class="popup-footer">
           <button @tap="handleConfirm">确认</button>
         </view>
@@ -26,10 +28,6 @@
       show: {
         type: Boolean,
         default: false
-      },
-      content: {
-        type: String,
-        default: '默认内容'
       }
     },
     methods: {

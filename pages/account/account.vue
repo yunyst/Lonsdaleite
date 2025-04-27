@@ -1,6 +1,6 @@
 <template>
   <view>
-    <Login v-if="showLoginModal"></Login>
+    <Login v-if="showLoginModal" @success="onLoginSuccess"></Login>
     <view v-else class="container">
       <view class="header-card">
         <view class="partup">
@@ -69,7 +69,12 @@
         </view>
         <!-- <view class="category-tool"></view> -->
       </view>
-
+      <view class="accessControl">
+        <button v-if="canAccess('user')" @click="userAction">普通用户操作</button>
+        <button v-if="canAccess(['admin'])" @click="adminAction">管理员操作</button>
+        <button v-if="canAccess(['admin', 'superadmin'])" @click="superAction">超级管理操作</button>
+        <button v-if="canAccess(['vip','user'])" @click="vipAction">VIP功能</button>
+      </view>
       <AllProduct></AllProduct>
     </view>
   </view>
@@ -82,6 +87,9 @@
   } from 'vuex'
   import Login from '../../components/Login/Login.vue'
   import AllProduct from '../../components/AllProduct/AllProduct.vue'
+  import {
+    hasPermission
+  } from '@/utils/permission.js';
   export default {
     components: {
       Login,
@@ -93,6 +101,9 @@
         noticeBarList: state => state.userCenter.noticeBarList,
         infoList: state => state.userCenter.infoList,
         orderList: state => state.userCenter.orderList,
+        //userInfo
+        user: state => state.userInfo.userInfo,
+        permissions: state => state.userInfo.permissions,
       })
     },
     data() {
@@ -107,10 +118,83 @@
         this.$store.dispatch('openLoginModal', 'tab'); // 直接显示登录弹窗('tab'/'detail')
       }
     },
-    methods: {}
+    async onShow() {
+      this.onLoginSuccess().then(() => {
+        // console.log("成功")
+      })
+    },
+    methods: {
+      async onLoginSuccess() {
+        const authData = uni.getStorageSync('auth_data');
+        const userInfo = authData ? authData.uid : null;
+        if (userInfo) {
+          await this.$store.dispatch('fetchUser', {
+            account: userInfo,
+            smartCloud: this.$smartCloud
+          });
+          console.log("登录成功之后拿到的用户信息:", this.user);
+          console.log("permissions", this.permissions)
+          console.log("Vuex userInfo:", this.$store.state.userInfo);
+        }
+      },
+      canAccess(permission) {
+        return hasPermission(permission);
+      },
+      userAction() {
+        console.log('普通用户功能');
+        uni.navigateTo({
+          url: '/pages/404/404'
+        });
+      },
+      adminAction() {
+        console.log('管理员功能');
+      },
+      superAction() {
+        uni.showToast({
+          title: '此功能需要超级管理员权限',
+          icon: 'none'
+        });
+        console.log('超级管理员功能');
+      },
+      vipAction() {
+        console.log('VIP功能');
+        if (this.permissions.includes('vip')) {
+          // 是vip，允许跳转
+          uni.navigateTo({
+            url: '' //vip页面
+          });
+        } else {
+          // 不是vip，只弹提示
+          uni.showToast({
+            title: '此功能需要VIP权限',
+            icon: 'none'
+          });
+        }
+      }
+    },
+
   }
 </script>
 <style scoped lang="scss">
+  /* 禁用状态样式 */
+  .accessControl {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      font-size: 22rpx;
+      width: 180rpx;
+      height: 60rpx;
+      background-color: #000000;
+      border-radius: 20rpx;
+      box-shadow: 4rpx 4rpx 8rpx #000000;
+      color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   .container {
     background-color: #f8f8f8;
 

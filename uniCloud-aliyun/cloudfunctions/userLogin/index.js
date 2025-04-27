@@ -47,7 +47,7 @@ exports.main = async (event, context) => {
     data: {
       token,
       expiresIn,
-      userInfo: user.account
+      userInfo: user.account,
     }
   }
 

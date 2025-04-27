@@ -24,6 +24,23 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* 禁用状态样式 */
+.accessControl.data-v-fe10413c {
+  display: flex;
+  justify-content: space-between;
+}
+.accessControl button.data-v-fe10413c {
+  font-size: 22rpx;
+  width: 180rpx;
+  height: 60rpx;
+  background-color: #000000;
+  border-radius: 20rpx;
+  box-shadow: 4rpx 4rpx 8rpx #000000;
+  color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container.data-v-fe10413c {
   background-color: #f8f8f8;
 }

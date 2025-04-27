@@ -21,7 +21,7 @@
       async checkAuth() {
         // 获取存储的认证数据
         const authData = uni.getStorageSync('auth_data');
-        console.log("authData", authData)
+        // console.log("authData", authData)
         // 基础检查
         if (!authData?.token) {
           this.gotoLogin();

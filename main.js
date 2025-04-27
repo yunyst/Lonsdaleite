@@ -9,7 +9,6 @@ Vue.use(uView)
 uni.$u.config.unit = 'rpx'
 import store from './store' //  引入 store
 
-
 import {
   rpxToPx,
   pxToRpx
@@ -18,7 +17,19 @@ import {
 Vue.prototype.$rpxToPx = rpxToPx;
 Vue.prototype.$pxToRpx = pxToRpx;
 
-Vue.config.productionTip = false
+import CloudPlugin from '@/plugins/cloud-plugin';
+Vue.use(CloudPlugin);
+import * as cloudFilters from './filters/cloud-filters.js';
+Object.keys(cloudFilters).forEach(key => {
+  Vue.filter(key, cloudFilters[key]);
+});
+
+Vue.config.productionTip = false;
+Vue.config.errorHandler = (err, vm, info) => {
+  console.log("进入了Vue.config.errorHandler")
+  console.log(err)
+};
+
 App.mpType = 'app'
 const app = new Vue({
   store,

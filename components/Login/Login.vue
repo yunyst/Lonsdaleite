@@ -6,10 +6,11 @@
         联系我们
       </view>
     </view>
-
-    <CenterPopup :show="isContactPopupShow" :content="'请拨打人工客服：18891801097'" @close="isContactPopupShow = false"
-      @confirm="isContactPopupShow = false"></CenterPopup>
-
+    <CenterPopup :show="isContactPopupShow" @close="isContactPopupShow = false" @confirm="isContactPopupShow = false">
+      <view>
+        请拨打人工客服：18891801097
+      </view>
+    </CenterPopup>
 
     <view class="title-container">
       <view class="title">
@@ -266,13 +267,14 @@
       forgetPw() {
         this.isContactPopupShow = true
       },
-      register() {
+      async register() {
         const payload = {
           isRegister: this.isRegister,
           account: this.inputValue,
           password: this.password,
         }
-        this.submitLogin(payload)
+        await this.submitLogin(payload)
+        this.$emit('success'); // 登录成功后通知父组件
       },
       clearAll() {
         //清除已输入数据

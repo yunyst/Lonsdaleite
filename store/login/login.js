@@ -35,14 +35,6 @@ const mutations = {
       uid,
       expires: expires || Date.now() + 7 * 24 * 60 * 60 * 1000 // 默认7天过期
     });
-    //本地存储token
-    // 后续请求携带Token
-    // uni.request({  //访问外部HTTP API
-    //   url: '...',
-    //   header: {
-    //     'Authorization': 'Bearer ' + uni.getStorageSync('token')
-    //   }
-    // });
   },
   SET_NEW_TOKEN(state, newToken) {
     state.token = newToken;

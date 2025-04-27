@@ -102,7 +102,6 @@
       }, // 滚动到底部触发
       handleScrollToLower() {
         if (this.loading || !this.hasMore) return;
-
         // 防抖处理
         clearTimeout(this.scrollTimer);
         this.scrollTimer = setTimeout(() => {
@@ -144,7 +143,7 @@
     },
     mounted() {
       this.loadMoreGoods().then(() => {
-        console.log("allGoods 数据加载完成", this.allGoods)
+        // console.log("allGoods 数据加载完成", this.allGoods)
       }).catch(() => {
         console.log("失败")
       })

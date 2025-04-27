@@ -41,7 +41,8 @@ exports.main = async (event, context) => {
     password: hashedPW,
     accountType: account.includes('@') ? 'email' : 'phone',
     createdAt: Date.now(),
-    updatedAT: Date.now()
+    updatedAT: Date.now(),
+    tag: ['user']
   })
   // 生成 token 并获取过期时间
   const {

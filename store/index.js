@@ -18,6 +18,7 @@ import productDetail from './productDetail/productDetail.js'
 import login from './login/login.js'
 import navigation from './navigation/navigation.js'
 import userCenter from './userCenter/userCenter.js'
+import userInfo from './userInfo/userInfo.js'
 export default new Vuex.Store({
   modules: {
     home,
@@ -25,7 +26,8 @@ export default new Vuex.Store({
     productDetail,
     login,
     navigation,
-    userCenter
+    userCenter,
+    userInfo
   },
   strict: process.env.NODE_ENV !== 'production' // 开发环境严格模式
 })

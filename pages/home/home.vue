@@ -9,15 +9,17 @@
         </view>
       </scroll-view>
     </view> -->
-    <HomeTabBar :categoryTabs="categoryTabs" />
+    <HomeTabBar :categoryTabs="categoryTabs" style="position: sticky;top:-1rpx;background-color: #fff;z-index: 1000;" />
     <!-- 内容区域：根据 activeCategory 条件渲染内容 -->
     <view class="category-content">
-      <CleaningContent v-if="activeCategory === 'cleaning'" />
-      <MakeupContent v-else-if="activeCategory === 'makeup'" />
-      <SkincareContent v-else-if="activeCategory === 'skincare'" />
-      <FragranceContent v-else-if="activeCategory === 'fragrance'" />
-      <BodycareContent v-else-if="activeCategory === 'bodycare'" />
-
+      <keep-alive
+        :include="['CleaningContent', 'MakeupContent', 'SkincareContent', 'FragranceContent', 'BodycareContent']">
+        <CleaningContent v-if="activeCategory === 'cleaning'" />
+        <MakeupContent v-else-if="activeCategory === 'makeup'" />
+        <SkincareContent v-else-if="activeCategory === 'skincare'" />
+        <FragranceContent v-else-if="activeCategory === 'fragrance'" />
+        <BodycareContent v-else-if="activeCategory === 'bodycare'" />
+      </keep-alive>
       <!-- 可以继续添加其他分类 -->
     </view>
   </view>
@@ -62,7 +64,11 @@
     mounted() {},
     onHide() {
       // 恢复默认分类
-      this.$store.dispatch('updateCategory', 'cleaning');
+      // this.$store.dispatch('updateCategory', 'cleaning');
+    },
+    errorCaptured(error, vm, info) {
+      console.log("进入父组件errorCaptured")
+      console.log(error)
     }
   }
 </script>

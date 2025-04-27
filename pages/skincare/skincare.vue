@@ -34,25 +34,25 @@
     },
     methods: {
       // 获取banner数据
-      async fetchBanners() {
+      async fetchBanners(pageType = 'cleaning') {
         this.isLoading = true;
         this.error = null;
         try {
-          // 调用云函数
-          const result = await uniCloud.callFunction({
-            name: 'getBanners', // 你的云函数名称
-            data: {
-              pageType: this.pageType // 传递参数
-            }
+          // 使用插件中的 $smartCloud 方法调用云函数
+          const result = await this.$smartCloud('getBanners', {
+            pageType
+          }, {
+            loadingText: "数据加载中...",
+            cacheExpire: 600, //s
+            retryTimes: 2, // 失败后最多重试2次
+            retryDelay: 500 // 每次重试间隔500ms
           });
-          if (result.result.code === 200) {
-            this.bannerList = result.result.data || [];
-            console.log(this.bannerList)
-          } else {
-            this.error = result.result.message || '获取数据失败';
-          }
+
+          // 如果云函数返回数据正常
+          this.bannerList = result || []; // 这里不需要再检查 result.result.code
+
         } catch (err) {
-          console.error('调用云函数失败:', err);
+          // 捕获到的错误会通过插件统一处理
           this.error = '网络请求失败，请稍后重试';
         } finally {
           this.isLoading = false;
@@ -66,14 +66,15 @@
       },
     },
     mounted() {
-      this.fetchBanners().then(() => {
+
+    },
+    created() {
+      this.$store.dispatch('updateCategory', this.pageType)
+      this.fetchBanners(this.pageType).then(() => {
         console.log(`${this.pageType} banners successful`)
       }).catch((err) => {
         console.log(err.message)
       })
-    },
-    created() {
-      this.$store.dispatch('updateCategory', this.pageType)
     }
   }
 </script>

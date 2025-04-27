@@ -184,6 +184,7 @@
         if (!this.$store.state.login.userInfo) {
           this.$store.dispatch('openLoginModal', 'detail');
         }
+
       },
       purchase() {
         if (!this.$store.state.login.userInfo) {
